@@ -16,7 +16,7 @@ function drawBoard(rows, cols) {
   }
 }
 
-drawBoard(5, 15);
+drawBoard(5, 5);
 
 //Takes an array that looks like this [1, 2, 3, 4, 5], where each number in array represents a grid cell to change colors
 //two digit ones, as in [10, 20, 30, 40, 50] turn green, single digit turn yellow.
@@ -88,7 +88,7 @@ let mainButton = document.getElementById("button-main");
 //which doc to choose from
 
 function getWord() {
-  let url = "word-list-files/15-letters.txt";
+  let url = "word-list-files/5-letters.txt";
   return fetch(url)
     .then((res) => res.text())
     .then((res) => {
