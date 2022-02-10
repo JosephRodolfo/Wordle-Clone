@@ -5,30 +5,30 @@ const container = document.getElementById("container");
 function drawBoard(rows, cols) {
   container.style.setProperty("--grid-rows", rows);
   container.style.setProperty("--grid-cols", cols);
-  for (c = 0; c < cols; c++) {
-    for (i = 0; i < rows; i++) {
+  for (c = 0; c < rows; c++) {
+    for (i = 0; i < cols; i++) {
       let cell = document.createElement("div");
       cell.id = "b" + (c + 1) + "" + (i + 1);
-      //  cell.innerText = "b" + (c + 1) + "" + (i + 1);
+      //     cell.innerText = "b" + (c + 1) + "" + (i + 1);
 
       container.appendChild(cell).className = "grid-item";
     }
   }
 }
 
-drawBoard(5, 5);
+drawBoard(6, 15);
 
 //Takes an array that looks like this [1, 2, 3, 4, 5], where each number in array represents a grid cell to change colors
 //two digit ones, as in [10, 20, 30, 40, 50] turn green, single digit turn yellow.
 function updateBoard(updaterInputArray, row) {
- // console.log(updaterInputArray);
   for (let i = 0; i < updaterInputArray.length; i++) {
-    let firstChar = updaterInputArray[i].toString().charAt(0);
+    //let firstChar = updaterInputArray[i].toString().charAt(0);
+    let firstChar = updaterInputArray[i].toString().slice(0, -1);
     let squareId = "#b" + row.toString() + "" + firstChar;
     let tempSquare = document.querySelector(squareId);
-    if (updaterInputArray[i].toString().length == 1) {
+    if (updaterInputArray[i].toString().slice(-1) == 6) {
       tempSquare.style.backgroundColor = "yellow";
-    } else {
+    } else if (updaterInputArray[i].toString().slice(-1) == 5) {
       tempSquare.style.backgroundColor = "green";
     }
   }
@@ -48,7 +48,7 @@ function findIndex(theWordleWord, theGuessWord) {
       if (theWordleWord[i] === theGuessWord[i]) {
         matchesArray.push(i + 1 + "" + 5);
       } else {
-        matchesArray.push(i + 1);
+        matchesArray.push(i + 1 + "" + 6);
       }
       i = array.indexOf(searchItem, ++i);
     }
@@ -72,14 +72,14 @@ function placeLetters(inputWord) {
   }
 }
 
-//Scorekeeper Object: keeps track of score, current row, guess word and the word you need 
-// to figure out. 
+//Scorekeeper Object: keeps track of score, current row, guess word and the word you need
+// to figure out.
 
 let scoreKeeper = {
   score: 0,
   row: 0,
   theWordleWord: "",
-  theGuess: ""
+  theGuess: "",
 };
 
 let mainButton = document.getElementById("button-main");
@@ -88,7 +88,7 @@ let mainButton = document.getElementById("button-main");
 //which doc to choose from
 
 function getWord() {
-  let url = "word-list-files/5-letters.txt";
+  let url = "word-list-files/15-letters.txt";
   return fetch(url)
     .then((res) => res.text())
     .then((res) => {
@@ -103,17 +103,13 @@ function getWord() {
     });
 }
 
-
-
 mainGame();
-
 
 function mainGame(resetHelper) {
   asynFunction();
 
   async function asynFunction() {
     scoreKeeper.theWordleWord = await getWord();
-    console.log("asyn fired");
 
     mainButton.addEventListener("click", myFunction);
 
@@ -122,7 +118,6 @@ function mainGame(resetHelper) {
     }
 
     function myFunction() {
-
       var theWord = scoreKeeper.theWordleWord.split("");
       scoreKeeper.row++;
       let wordGuess = document.getElementById("word-guess");
@@ -160,7 +155,6 @@ function checkForWin(wordLength) {
 //Resets game. Turns row back to 0, clears css on board and letters from guesses
 //resets scorekeepers data. Passes 1 to mainGame() which indicates to remove event listener
 
-
 function resetGame() {
   scoreKeeper.row = 0;
 
@@ -173,7 +167,6 @@ function resetGame() {
     });
   }
   scoreKeeper.theWordleWord = "";
-
 
   mainGame(1);
 }
