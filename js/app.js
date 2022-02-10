@@ -4,7 +4,20 @@ let drawBoardButton = document.getElementById("button-draw-board");
 const once = {
   once: true,
 };
+let mainButton = document.getElementById("button-main");
 drawBoardButton.addEventListener("click", startGame, once);
+
+//Scorekeeper Object: keeps track of score, current row, guess word and the word you need
+// to figure out.
+
+let scoreKeeper = {
+  score: 0,
+  row: 0,
+  theWordleWord: "",
+  theGuess: "",
+  numberOfLettersInWord: 0,
+};
+
 
 //Draws board, lets you choose size
 
@@ -84,19 +97,6 @@ function placeLetters(inputWord) {
     tempLetterSquare.innerText = inputWord[i];
   }
 }
-
-//Scorekeeper Object: keeps track of score, current row, guess word and the word you need
-// to figure out.
-
-let scoreKeeper = {
-  score: 0,
-  row: 0,
-  theWordleWord: "",
-  theGuess: "",
-  numberOfLettersInWord: 0,
-};
-
-let mainButton = document.getElementById("button-main");
 
 //Retrieves random word from txt file, in the future will add code to select how many letters, i.e.
 //which doc to choose from
