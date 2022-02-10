@@ -69,7 +69,6 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
       return theWordleWord.indexOf(obj) == -1;
     });
     let missLetters = [...new Set(output)];
-    console.log(missLetters);
 
     for (let i = 0; i < missLetters.length; i++) {
       let tempSquare = document.querySelector("#key-" + missLetters[i]);
@@ -77,7 +76,6 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
     }
   }
 
-  console.log("keyboard update");
   for (let i = 0; i < updaterInputArray.length; i++) {
     let allButLast = updaterInputArray[i].slice(0, -1);
 
@@ -152,7 +150,6 @@ function getWord(numberLetters) {
 
       var line = allWords[r];
       var testWord = line.toString();
-      console.log(testWord);
       return testWord;
     });
 }
@@ -189,6 +186,10 @@ function mainGame(resetHelper) {
       if (checkForWin(theWord.length)) {
         resetGame();
       }
+      if (checkForLoss(scoreKeeper.row)){
+        resetGame();
+
+      }
     }
   }
 }
@@ -211,6 +212,13 @@ function checkForWin(wordLength) {
       return true;
     }
   }
+}
+
+function checkForLoss(row) {
+  if (row == 6) {
+    alert("You lost");
+    return true;
+    }
 }
 
 //Resets game. Turns row back to 0, clears css on board and letters from guesses
