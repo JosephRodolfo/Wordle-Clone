@@ -18,13 +18,19 @@ function drawBoard(rows, cols) {
 
 let numberOfLetters = document.getElementById("number-of-letters");
 let drawBoardButton = document.getElementById("button-draw-board");
-function drawBoardButtonFunction() {
+
+//startGame begins when you click submit on number of columns (letters),
+//draws board and kicks off main game flow;
+function startGame() {
   drawBoard(6, numberOfLetters.value);
+  scoreKeeper.numberOfLettersInWord = numberOfLetters.value;
+
+  mainGame();
 }
 const once = {
   once: true,
 };
-drawBoardButton.addEventListener("click", drawBoardButtonFunction, once);
+drawBoardButton.addEventListener("click", startGame, once);
 
 //Takes an array that looks like this [1, 2, 3, 4, 5], where each number in array represents a grid cell to change colors
 //two digit ones, as in [10, 20, 30, 40, 50] turn green, single digit turn yellow.
@@ -88,6 +94,7 @@ let scoreKeeper = {
   row: 0,
   theWordleWord: "",
   theGuess: "",
+  numberOfLettersInWord: 0
 };
 
 let mainButton = document.getElementById("button-main");
@@ -95,8 +102,9 @@ let mainButton = document.getElementById("button-main");
 //Retrieves random word from txt file, in the future will add code to select how many letters, i.e.
 //which doc to choose from
 
-function getWord() {
-  let url = "word-list-files/15-letters.txt";
+function getWord(numberLetters) {
+ // let url = "word-list-files/15-letters.txt";
+  let url = "word-list-files/" + numberLetters.toString() + "-letters.txt";
   return fetch(url)
     .then((res) => res.text())
     .then((res) => {
@@ -111,13 +119,13 @@ function getWord() {
     });
 }
 
-mainGame();
+//mainGame();
 
 function mainGame(resetHelper) {
   asynFunction();
 
   async function asynFunction() {
-    scoreKeeper.theWordleWord = await getWord();
+    scoreKeeper.theWordleWord = await getWord(scoreKeeper.numberOfLettersInWord);
 
     mainButton.addEventListener("click", myFunction);
 
