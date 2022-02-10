@@ -59,13 +59,46 @@ function updateBoard(updaterInputArray, row) {
   }
 }
 //updates keyboards with hits, yellow or green. Still need to gray out unmatches;
-function updateKeyboard(updaterInputArray, theGuessWord) {
+function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
+
+
+grayOutMisses();
+
+//get produces array of guess misses, missLetters
+
+
+
+function grayOutMisses() {
+
+  const output = theGuessWord.filter(function (obj) {
+    return theWordleWord.indexOf(obj) == -1;
+  });
+let missLetters = [...new Set(output)];
+console.log(missLetters);
+
+for (let i=0; i<missLetters.length; i++){
+
+  let tempSquare = document.querySelector("#key-" + missLetters[i]);
+tempSquare.style.backgroundColor= "rgb(93,93,93)";
+
+
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
   console.log("keyboard update");
   for (let i = 0; i < updaterInputArray.length; i++) {
  
-    console.log(updaterInputArray[i]);
-    console.log(updaterInputArray[i]);
-
     let allButLast = updaterInputArray[i].slice(0, -1);
 
     allButLast--;
@@ -73,7 +106,6 @@ function updateKeyboard(updaterInputArray, theGuessWord) {
     let keyLight = "#key-" + theGuessWord[allButLast];
 
     let tempSquare = document.querySelector(keyLight);
-    console.log(tempSquare);
       if (updaterInputArray[i].toString().slice(-1) == 6) {
 
         if(tempSquare.style.backgroundColor == "green") {
@@ -175,7 +207,7 @@ function mainGame(resetHelper) {
       updateBoard(findIndex(theWord, scoreKeeper.theGuess), scoreKeeper.row);
       updateKeyboard(
         findIndex(theWord, scoreKeeper.theGuess),
-        scoreKeeper.theGuess
+        scoreKeeper.theGuess, theWord
       );
       placeLetters(scoreKeeper.theGuess);
       if (checkForWin(theWord.length)) {
