@@ -144,12 +144,12 @@ function getWord(numberLetters) {
   return fetch(url)
     .then((res) => res.text())
     .then((res) => {
-      var allWords = res.split("\n");
+      let allWords = res.split("\n");
 
-      var r = Math.floor(Math.random() * allWords.length);
+      let r = Math.floor(Math.random() * allWords.length);
 
-      var line = allWords[r];
-      var testWord = line.toString();
+      let line = allWords[r];
+      let testWord = line.toString();
       return testWord;
     });
 }
