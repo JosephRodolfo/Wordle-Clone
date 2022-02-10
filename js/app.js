@@ -16,7 +16,15 @@ function drawBoard(rows, cols) {
   }
 }
 
-drawBoard(6, 15);
+let numberOfLetters = document.getElementById("number-of-letters");
+let drawBoardButton = document.getElementById("button-draw-board");
+function drawBoardButtonFunction() {
+  drawBoard(6, numberOfLetters.value);
+}
+const once = {
+  once: true,
+};
+drawBoardButton.addEventListener("click", drawBoardButtonFunction, once);
 
 //Takes an array that looks like this [1, 2, 3, 4, 5], where each number in array represents a grid cell to change colors
 //two digit ones, as in [10, 20, 30, 40, 50] turn green, single digit turn yellow.
