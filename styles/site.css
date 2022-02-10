@@ -1,0 +1,48 @@
+.letters {
+
+height: 100px;
+width: 100px;
+background-color: lightblue;
+border: 1px solid black;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.letters-container {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+:root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+  }
+  
+  #container {
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 100px);
+    grid-template-columns: repeat(var(--grid-cols), 100px);
+    width: 500px;
+  }
+  
+  .grid-item {
+    border: 1px solid black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+
+  }
