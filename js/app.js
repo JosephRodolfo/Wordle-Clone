@@ -18,7 +18,6 @@ let scoreKeeper = {
   numberOfLettersInWord: 0,
 };
 
-
 //Draws board, lets you choose size
 
 function drawBoard(rows, cols) {
@@ -59,6 +58,39 @@ function updateBoard(updaterInputArray, row) {
     }
   }
 }
+//updates keyboards with hits, yellow or green. Still need to gray out unmatches;
+function updateKeyboard(updaterInputArray, theGuessWord) {
+  console.log("keyboard update");
+  for (let i = 0; i < updaterInputArray.length; i++) {
+ 
+    console.log(updaterInputArray[i]);
+    console.log(updaterInputArray[i]);
+
+    let allButLast = updaterInputArray[i].slice(0, -1);
+
+    allButLast--;
+
+    let keyLight = "#key-" + theGuessWord[allButLast];
+
+    let tempSquare = document.querySelector(keyLight);
+    console.log(tempSquare);
+      if (updaterInputArray[i].toString().slice(-1) == 6) {
+
+        if(tempSquare.style.backgroundColor == "green") {
+          tempSquare.style.backgroundColor = "green"
+
+
+        } else {
+
+
+
+      tempSquare.style.backgroundColor = "yellow";}
+    } else if (updaterInputArray[i].toString().slice(-1) == 5) {
+      tempSquare.style.backgroundColor = "green";
+    }  
+  }
+}
+
 //produces the information array to input into updateBoard
 
 function findIndex(theWordleWord, theGuessWord) {
@@ -141,6 +173,10 @@ function mainGame(resetHelper) {
       let holder = wordGuess.value;
       scoreKeeper.theGuess = holder.split("");
       updateBoard(findIndex(theWord, scoreKeeper.theGuess), scoreKeeper.row);
+      updateKeyboard(
+        findIndex(theWord, scoreKeeper.theGuess),
+        scoreKeeper.theGuess
+      );
       placeLetters(scoreKeeper.theGuess);
       if (checkForWin(theWord.length)) {
         resetGame();
