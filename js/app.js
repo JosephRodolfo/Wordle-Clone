@@ -1,3 +1,5 @@
+import { validateGuess } from '/js/validation.js';
+
 const container = document.getElementById("container");
 let numberOfLetters = document.getElementById("number-of-letters");
 let drawBoardButton = document.getElementById("button-draw-board");
