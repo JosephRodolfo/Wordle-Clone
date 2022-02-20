@@ -5,61 +5,306 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/site.css" />
+
     <title>Document</title>
   </head>
   <body>
-    <div id="inputs-container">
-      <div>Number of letters, 3 to 15</div>
-      <input type="text" id="number-of-letters" />
+    <div id="grid-body-wrapper">
+      <nav>
+        <ul>
+          <li class="hamburger-button">
+            <img src="assets/icons8-menu.svg" />
+            <ul class="dropdown left">
+              <li><a href="#test">Home</a></li>
+              <li><a href="#test">Games</a></li>
+              <li><a href="#test">About</a></li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li><a href="#test">Home</a></li>
+              <li><a href="#test">Games</a></li>
+              <li><a href="#test">About</a></li>
+            </ul>
+          </li>
+          <li class="title">WORDLE</li>
+          <li class="right">
+            <img src="assets/gear-svgrepo-com.svg" />
+            <ul class="dropdown right">
+              <li>
+                <div class="dropdown-titles">Letters</div>
+                <div class="number-submit-container">
+                  <input type="number" />
+                  <button type="submit" class="button">Reset</button>
+                </div>
+              </li>
+              <li>
+                <div class="dropdown-titles">Dark Mode</div>
 
-      <button type="button" id="button-draw-board">Submit</button>
-      <div>Word Guess</div>
-      <input type="text" id="word-guess" />
-      <button type="button" id="button-main">Submit</button>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </li>
+            </ul>
+          </li>
+          <li><div>Menu</div></li>
+        </ul>
+      </nav>
+      <main id="grid-board-and-input">
+        <section id="grid-board-container">
+          <div id="grid-board"></div>
+        </section>
+
+        <section id="input-container">
+          <input type="text" />
+          <button type="submit" class="button">Submit</button>
+        </section>
+      </main>
+
+      <div id="keyboard">
+        <div id="keyboard-container">
+          <div class="keyboard-row">
+            <div id="key-q" class="keyboard-letters">Q</div>
+            <div id="key-w" class="keyboard-letters">W</div>
+            <div id="key-e" class="keyboard-letters">E</div>
+            <div id="key-r" class="keyboard-letters">R</div>
+            <div id="key-t" class="keyboard-letters">T</div>
+            <div id="key-y" class="keyboard-letters">Y</div>
+            <div id="key-u" class="keyboard-letters">U</div>
+            <div id="key-i" class="keyboard-letters">I</div>
+            <div id="key-o" class="keyboard-letters">O</div>
+            <div id="key-p" class="keyboard-letters">P</div>
+          </div>
+          <div class="keyboard-row">
+            <div id="key-a" class="keyboard-letters">A</div>
+            <div id="key-s" class="keyboard-letters">S</div>
+            <div id="key-d" class="keyboard-letters">D</div>
+            <div id="key-f" class="keyboard-letters">F</div>
+            <div id="key-g" class="keyboard-letters">G</div>
+            <div id="key-h" class="keyboard-letters">H</div>
+            <div id="key-j" class="keyboard-letters">J</div>
+            <div id="key-k" class="keyboard-letters">K</div>
+            <div id="key-l" class="keyboard-letters">L</div>
+          </div>
+          <div class="keyboard-row">
+            <div id="key-enter" class="keyboard-letters">Enter</div>
+            <div id="key-z" class="keyboard-letters">Z</div>
+            <div id="key-x" class="keyboard-letters">X</div>
+            <div id="key-c" class="keyboard-letters">C</div>
+            <div id="key-v" class="keyboard-letters">V</div>
+            <div id="key-b" class="keyboard-letters">B</div>
+            <div id="key-n" class="keyboard-letters">N</div>
+            <div id="key-m" class="keyboard-letters">M</div>
+            <div id="key-backspace" class="keyboard-letters">Back</div>
+          </div>
+        </div>
+        <div id="all-letters-container">
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">A</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">B</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">C</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">D</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">E</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">F</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">G</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">H</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">I</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">J</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">K</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">L</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">M</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">N</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">O</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">P</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">Q</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">R</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">S</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">T</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">U</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">V</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">W</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">X</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">Y</div>
+          </div>
+          <div id="key-a" class="flex-circle">
+            <div class="flex-inner-circle">Z</div>
+          </div>
+        </div>
+      </div>
+      <aside id="instructions">
+        <section>
+          <p>Guess the <strong>WORDLE</strong> in six tries.</p>
+
+          <p>
+            Each guess must be a valid five-letter word. Hit the enter button to
+            submit.
+          </p>
+
+          <p>
+            After each guess, the color of the tiles will change to show how
+            close your guess was to the word.
+          </p>
+        </section>
+        <section>
+          <p><strong>Examples</strong></p>
+          <p></p>
+          <div class="demo-word">
+            <div
+              class="flex-circle demo-key"
+              style="background-color: var(--lightThemeBlue)"
+            >
+              <div
+                class="flex-inner-circle"
+                style="background-color: var(--lightThemeBlue)"
+              >
+                W
+              </div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">E</div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">A</div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">R</div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">Y</div>
+            </div>
+          </div>
+          <p>The letter W is in the word and in the correct spot.</p>
+          <div class="demo-word">
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">P</div>
+            </div>
+            <div
+              class="flex-circle demo-key"
+              style="background-color: var(--lightThemeRed)"
+            >
+              <div
+                class="flex-inner-circle"
+                style="background-color: var(--lightThemeRed)"
+              >
+                I
+              </div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">L</div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">L</div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">S</div>
+            </div>
+          </div>
+          <p>The letter I is in the word but in the wrong spot.</p>
+          <div class="demo-word">
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">V</div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">A</div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">G</div>
+            </div>
+            <div
+              class="flex-circle demo-key"
+              style="background-color: var(--lightThemeGray)"
+            >
+              <div
+                class="flex-inner-circle"
+                style="background-color: var(--lightThemeGray)"
+              >
+                W
+              </div>
+            </div>
+            <div class="flex-circle demo-key">
+              <div class="flex-inner-circle">E</div>
+            </div>
+          </div>
+          <p>The letter U is not in the word in any spot.</p>
+        </section>
+      </aside>
     </div>
-    <div id="grid-and-keyboard-container">
-    <div id="container"></div>
-    <div id="keyboard-container">
-      <div class="keyboard-row">
-        <div id="key-q"class="keyboard-letters">Q</div>
-        <div id="key-w"class="keyboard-letters">W</div>
-        <div id="key-e"class="keyboard-letters">E</div>
-        <div id="key-r"class="keyboard-letters">R</div>
-        <div id="key-t"class="keyboard-letters">T</div>
-        <div id="key-y"class="keyboard-letters">Y</div>
-        <div id="key-u"class="keyboard-letters">U</div>
-        <div id="key-i"class="keyboard-letters">I</div>
-        <div id="key-o"class="keyboard-letters">O</div>
-        <div id="key-p"class="keyboard-letters">P</div>
-      </div>
-      <div class="keyboard-row">
-        <div id="key-a"class="keyboard-letters">A</div>
-        <div id="key-s"class="keyboard-letters">S</div>
-        <div id="key-d"class="keyboard-letters">D</div>
-        <div id="key-f"class="keyboard-letters">F</div>
-        <div id="key-g"class="keyboard-letters">G</div>
-        <div id="key-h"class="keyboard-letters">H</div>
-        <div id="key-j" class="keyboard-letters">J</div>
-        <div id="key-k"class="keyboard-letters">K</div>
-        <div id="key-l"class="keyboard-letters">L</div>
-      </div>
-      <div class="keyboard-row">
-        <div id="key-z"class="keyboard-letters">Z</div>
-        <div id="key-x"class="keyboard-letters">X</div>
-        <div id="key-c"class="keyboard-letters">C</div>
-        <div id="key-v"class="keyboard-letters">V</div>
-        <div id="key-b"class="keyboard-letters">B</div>
-        <div id="key-n"class="keyboard-letters">N</div>
-        <div id="key-m"class="keyboard-letters">M</div>
-       <!---<div id="key-q"class="keyboard-letters"></div>
-        <div id="key-q"class="keyboard-letters"></div>--> 
-      </div>
+    <div class="overlay">
+      <div class="overlay-content">
+        <div class="close-overlay">&times;</div>
+        <ul>
+          <li>
+            <div class="overlay-labels">Letters</div>
+            <div class="number-submit-container">
+              <input type="number" />
+              <button type="submit" class="button">Reset</button>
+            </div>
+          </li>
+          <li>
+            <div class="overlay-labels">Dark Mode</div>
 
-
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Games</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
   </body>
-  <script src="js/app.js" type="module"></script>
-  <script src="js/validation.js" type="module"></script>
-
 </html>
+
+<script src="js/app.js" type="module"></script>
+<script src="js/validation.js" type="module"></script>
