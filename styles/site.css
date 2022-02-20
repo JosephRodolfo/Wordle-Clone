@@ -2,17 +2,17 @@
 
 @font-face {
   font-family: CocogooseUltralight;
-  src: url(fonts/cocogoose/Cocogoose\ Pro\ Ultralight-trial.ttf);
+  src: url(../fonts/cocogoose/Cocogoose\ Pro\ Ultralight-trial.ttf);
 }
 
 @font-face {
   font-family: CocogooseRegular;
-  src: url(fonts/cocogoose/Cocogoose-regular.ttf);
+  src: url(../fonts/cocogoose/Cocogoose-regular.ttf);
 }
 
 @font-face {
   font-family: CocogooseSemiLight;
-  src: url(fonts/cocogoose/Cocogoose\ Pro\ Semilight-trial.ttf);
+  src: url(../fonts/cocogoose/Cocogoose\ Pro\ Semilight-trial.ttf);
 }
 
 /* Base styles*/
