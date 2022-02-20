@@ -74,8 +74,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-
-/*grid layout styles*/
+/*grid and layout styles*/
 
 #grid-body-wrapper {
   display: grid;
@@ -90,7 +89,6 @@ input[type="number"]::-webkit-outer-spin-button {
   grid-template-columns: 1fr;
   overflow: hidden;
 }
-
 
 #grid-board-and-input {
   background-color: var(--lightThemeBackground);
@@ -113,11 +111,8 @@ input[type="number"]::-webkit-outer-spin-button {
   max-height: 100%;
 }
 
-/* Just to make the grid visible */
-
 #grid-board > * {
   background-color: var(--lightThemeGray);
-  /* border: 1px black solid;*/
   aspect-ratio: 1/1;
   border-radius: 100px;
 }
@@ -128,7 +123,6 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: center;
   height: 60vh;
   padding: 10px;
-  /*background-color: blue;*/
 }
 #input-container {
   background-color: var(--lightThemeBlue);
@@ -136,8 +130,7 @@ input[type="number"]::-webkit-outer-spin-button {
   display: none;
 }
 
-
-/*overlay styles*/
+/* mobile overlay styles*/
 .overlay-content {
   width: 100%;
 }
@@ -202,35 +195,7 @@ input[type="number"]::-webkit-outer-spin-button {
   height: min-content;
 }
 
-.number-submit-container {
-  margin-right: 0;
-}
-
-
-#instructions {
-  display: none;
-}
-
-.keyboard-letters {
-  background-color: var(--lightThemeGray);
-  font-family: CocogooseRegular, "sans-serif";
-  max-height: 58px;
-  flex-basis: 58px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  color: var(--lightThemeBlack);
-}
-
-#keyboard-container {
-  height: 40vh;
-  width: 100%;
-  max-height: 100%;
-}
-#keyboard {
-  padding: 10px;
-}
+/*nav styles*/
 
 nav {
   width: 100%;
@@ -296,22 +261,38 @@ nav > ul > li:nth-child(5):hover {
   cursor: pointer;
 }
 
+.number-submit-container {
+  margin-right: 0;
+}
+
+/*keyboard and miss or hit indicator all letters styles */
+
+.keyboard-letters {
+  background-color: var(--lightThemeGray);
+  font-family: CocogooseRegular, "sans-serif";
+  max-height: 58px;
+  flex-basis: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: var(--lightThemeBlack);
+}
+
+#keyboard-container {
+  height: 40vh;
+  width: 100%;
+  max-height: 100%;
+}
 
 #keyboard {
   background-color: var(--lightThemeBackground);
   grid-area: keyboard;
-
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-
-#instructions {
-  background-color: var(--lightThemeBackground);
-  grid-area: instructions;
-}
-
-/* Keyboard styles*/
 
 .keyboard-row {
   display: flex;
@@ -337,13 +318,21 @@ nav > ul > li:nth-child(5):hover {
   display: none;
 }
 
-/*instructions wordle demos */
+/*instructions aside styles*/
+
+aside {
+  background-color: var(--lightThemeBackground);
+  grid-area: instructions;
+  display: none;
+}
 
 .demo-word {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
+/*Number of letters settings and toggle light mode for mobile and full screen styles */
 
 .number-submit-container {
   width: 50%;
@@ -376,7 +365,7 @@ input[type="number"] {
   border: 0;
 }
 
-/* The switch - the box around the slider */
+/* The switch itself, box around the slider */
 .switch {
   position: relative;
   display: inline-block;
@@ -385,14 +374,13 @@ input[type="number"] {
   border-radius: 50%;
 }
 
-/* Hide default HTML checkbox */
+/* This hidess the default checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -438,7 +426,7 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
+/* rounds the slider */
 .slider.round {
   border-radius: 34px;
 }
@@ -482,7 +470,25 @@ input[type="text"] {
   left: 5px;
 }
 
+/*Media query 1*/
 @media only screen and (min-width: 600px) {
+  /*grid layout style*/
+
+  #grid-body-wrapper {
+    width: 100%;
+    height: 100%;
+    grid-template-areas:
+      "nav nav"
+      "board-input keyboard"
+      "board-input instructions"
+      "board-input instructions";
+
+    grid-template-rows: 50px 1fr 1fr 1fr;
+    grid-template-columns: 2.5fr 1.5fr;
+  }
+
+  /*Right dropdown slider styles, gear icon*/
+
   ul li:hover ul.dropdown.right {
     position: absolute;
     height: 150px;
@@ -519,7 +525,6 @@ input[type="text"] {
   }
 
   ul li ul.dropdown.right li {
-    /*    background-color: var(--lightThemeBackground);*/
     margin: 0;
   }
 
@@ -531,6 +536,16 @@ input[type="text"] {
     margin: 1em 0;
     height: min-content;
   }
+
+  .number-submit-container {
+    margin-right: 2em;
+  }
+
+  .switch {
+    margin-right: 2em;
+  }
+
+  /*Nav styles*/
 
   .title {
     font-size: 6rem;
@@ -555,22 +570,38 @@ input[type="text"] {
     display: flex;
   }
 
-  /*
-  nav>ul> li:nth-child(1), li:nth-child(2), li:nth-child(3)  {
-width: 5em;
-margin: 0 1em;  
-  border-right: 1px solid black;
-  padding: 1em;
-  } */
-
   nav > ul > li:nth-child(5) {
     display: none;
   }
 
-  #instructions {
+  /*Instructions Aside styles*/
+
+  aside {
     display: flex;
     flex-direction: column;
   }
+
+  aside > p {
+    margin: 14px 0 14px 0;
+  }
+
+  aside {
+    padding: 14px;
+    transition: transform 3000ms;
+    transform: translate3d(0, 100%);
+    height: 1000px;
+  }
+
+  aside section {
+    border-bottom: 1px solid black;
+  }
+
+  #instructions {
+    visibility: visible;
+    flex-direction: column;
+    display: flex;
+  }
+  /*keyboard and all-letters hit or miss indicator styles */
   #all-letters-container {
     display: flex;
     flex-direction: row;
@@ -589,18 +620,7 @@ margin: 0 1em;
     display: none;
   }
 
-  #grid-body-wrapper {
-    width: 100%;
-    height: 100%;
-    grid-template-areas:
-      "nav nav"
-      "board-input keyboard"
-      "board-input instructions"
-      "board-input instructions";
-
-    grid-template-rows: 50px 1fr 1fr 1fr;
-    grid-template-columns: 2.5fr 1.5fr;
-  }
+  /*Game board grid and input guess submission styles*/
 
   #grid-board-and-input {
     display: flex;
@@ -609,7 +629,6 @@ margin: 0 1em;
   }
 
   #grid-board-container {
-    /*   padding: 20px; */
     height: 60vh;
     padding: 10px;
   }
@@ -630,6 +649,8 @@ margin: 0 1em;
   #input-container > * {
     margin: 20px;
   }
+
+  /*circles, used both in aside and keyboard*/
 
   .flex-circle {
     height: 3rem;
@@ -656,28 +677,12 @@ margin: 0 1em;
     font-size: 2rem;
     font-family: CocogooseUltralight;
     background-color: var(--lightThemeBlack);
+    color: var(--lightThemeBackground);
   }
-
-  aside > p {
-    margin: 14px 0 14px 0;
-  }
-
-  aside {
-    padding: 14px;
-    transition: transform 3000ms;
-    transform: translate3d(0, 100%);
-    height: 1000px;
-  }
-
-  .number-submit-container {
-    margin-right: 2em;
-  }
-
-  .switch {
-    margin-right: 2em;
-  }
-
+  /*Media query 2, contained within min-width 600px media query, for left side hamburger nav 
+that only exists within medium size laout*/
   @media screen and (min-width: 600px) and (max-width: 1100px) {
+    /*left side hamburger drop down nav bar*/
     ul li ul.dropdown.left {
       height: 0;
       display: block;
@@ -700,9 +705,6 @@ margin: 0 1em;
       top: 50px;
       width: var(--dropDownWidth);
       background: var(--lightThemeDropDown);
-    }
-
-    ul li:hover ul.dropdown.left {
       left: 0;
     }
 
@@ -711,51 +713,17 @@ margin: 0 1em;
       margin: 0;
     }
 
+    /*aside style to allow slide up on hover, only needed in medium size layout*/
     aside:hover {
       transform: translateY(calc(var(--allLettersHeight) * -1));
       height: 1000px;
-
       transition: transform 3000ms;
     }
   }
-
-  aside section {
-    border-bottom: 1px solid black;
-  }
-
-  #instructions {
-    visibility: visible;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* CSS */
-
-  /*came with guess submit button styles, not necessary */
-  /*  @media (min-width: 768px) {
-    .button {
-      padding: 0.25em 0.75em;
-    }
-  } */
 }
-
+/*Media query 3*/
 @media only screen and (min-width: 1100px) {
-  ul li ul.dropdown.right {
-    width: 33.3333333333333333%;
-  }
-
-  ul li:hover ul.dropdown.right {
-    width: 33.333333333333333333333333333%;
-  }
-
-  aside {
-    height: 100%;
-  }
-
-  aside:hover {
-    transform: none;
-  }
-
+  /*grid layout*/
   #grid-body-wrapper {
     width: 100%;
     height: 100%;
@@ -769,6 +737,24 @@ margin: 0 1em;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  /*right side gear icon nav dropdown*/
+
+  ul li ul.dropdown.right,
+  ul li:hover ul.dropdown.right {
+    width: 33.3333333333333333%;
+  }
+
+  /*aside styles, disables slide up, resizes*/
+
+  aside {
+    height: 100%;
+  }
+
+  aside:hover {
+    transform: none;
+  }
+
+  /*keyboard/all-letters hit or miss styles*/
   .all-letters {
     background-color: var(--lightThemeBlack);
     height: 58px;
@@ -799,6 +785,7 @@ margin: 0 1em;
     height: 50%;
   }
 
+  /*nav styles*/
   .title {
     position: absolute;
     margin-left: auto;
@@ -822,105 +809,8 @@ margin: 0 1em;
     width: 300px;
   }
 
+  /*disables left side compressed hamburger menu button*/
   .hamburger-button {
     display: none;
   }
 }
-
-.flex-circle {
-  height: 3rem;
-
-  aspect-ratio: 1/1;
-  background-color: var(--lightThemeBlack);
-  border-radius: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-}
-
-.flex-inner-circle {
-  width: 93.75%;
-  height: 93.75%;
-  background-color: var(--lightThemeBlack);
-  border-radius: 50%;
-  border: 0.1rem solid var(--lightThemeBackground);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: var(--lightThemeBackground);
-  font-size: 2rem;
-  font-family: CocogooseUltralight;
-}
-
-/* :root {
-    --grid-cols: 1;
-    --grid-rows: 1;
-  }
-  
-  #container {
-    display: grid;
-    grid-template-rows: repeat(var(--grid-rows), 50px);
-    grid-template-columns: repeat(var(--grid-cols), 50px);
-    width: 500px;
-  }
-  
-  .grid-item {
-    border: 1px solid black;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: lightblue;
-
-  }
-
-  #inputs-container {
-
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-
-  }
-
-  #grid-and-keyboard-container {
-
-    display: flex;
-    flex-direction: column;
-
-  }
-
-  #keyboard-container {
-
-    width: 700px;
-    height: 250px;
-    background-color: lightsteelblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-  .keyboard-row {
-
-display: flex;
-flex-direction: row;
-width: 100%;
-height: 30%;
-background-color: lightsteelblue;
-justify-content: space-around;
-  }
-
-  .keyboard-letters {
-
-    background-color: lightgray;
-    height: 100%;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  } 
-  */
