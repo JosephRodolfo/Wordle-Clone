@@ -318,3 +318,28 @@ function getResponsiveFontSize() {
 
 getResponsiveFontSize();
 window.addEventListener("resize", getResponsiveFontSize);
+
+mobileNavControl();
+function mobileNavControl () {
+  let mobileMenuButton = document.querySelector("nav>ul>li:nth-child(5)");
+  mobileMenuButton.addEventListener('click', openMobileNav);
+
+  let closeMobileMenuButton = document.querySelector(".close-overlay");
+  closeMobileMenuButton.addEventListener('click', closeMobileNav);
+
+  function openMobileNav() {
+let overlay = document.querySelector(".overlay");
+
+overlay.style.setProperty('width', "100%");
+
+
+
+  }
+
+  function closeMobileNav() {
+    
+    let overlay = document.querySelector(".overlay");
+    overlay.style.setProperty('width', "0%");
+
+  }
+}
