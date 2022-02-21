@@ -13,7 +13,7 @@ let mainButton = document.getElementById("button-guess");
 
 let resetButtonArray = document.querySelectorAll(".reset");
 
-
+console.log(resetButtonArray);
 
 
 resetButtonArray[0].addEventListener('click', resetGame);
@@ -52,7 +52,6 @@ function drawBoard(rows, cols) {
 function startGame() {
   drawBoard(6, 5); // numberOfLetters.value); //
   scoreKeeper.numberOfLettersInWord = 5; //numberOfLetters.value;
-
   mainGame();
 }
 
@@ -261,7 +260,7 @@ function checkForWin(wordLength) {
   for (let i = 0; i < wordLength; i++) {
     let squareId = "#b" + scoreKeeper.row.toString() + "" + (i + 1);
     let tempSquare = document.querySelector(squareId);
-    if (tempSquare.style.backgroundColor === "green") {
+    if (tempSquare.style.backgroundColor === "var(--lightThemeBlue)") {
       score++;
     }
     if (score === wordLength) {
@@ -299,7 +298,7 @@ function resetGame() {
   mainGame(1);
 
   function resetKeyboard() {
-    let keyElements = document.querySelectorAll(".keyboard-letters");
+    let keyElements = document.querySelectorAll(".keyboard-letters, .flex-circle, .flex-circle>*");
 
     keyElements.forEach((element) => {
       element.style.backgroundColor = "var(--lightThemeGray)";
