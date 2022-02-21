@@ -202,6 +202,8 @@ function findIndex(theWordleWord, theGuessWord) {
 
 //Inserts guess letters into the HTML, takes input word array.
 function placeLetters(inputWord) {
+  getResponsiveFontSize();
+
   for (let i = 0; i < inputWord.length; i++) {
     let squareId = "#b" + scoreKeeper.row + "" + (i + 1);
     let tempLetterSquare = document.querySelector(squareId);
@@ -328,7 +330,7 @@ function getResponsiveFontSize() {
   let gridBoardWidthVar = document.querySelector("#grid-board");
   let width = gridBoardWidthVar.clientWidth;
 
-  let value = (width / scoreKeeper.theWordleWord.length) * 0.65;
+  let value = (width / scoreKeeper.numberOfLettersInWord) * 0.65;
 
   let gridItems = document.querySelectorAll("#grid-board > *");
 
@@ -337,7 +339,6 @@ function getResponsiveFontSize() {
   );
 }
 
-getResponsiveFontSize();
 window.addEventListener("resize", getResponsiveFontSize);
 
 mobileNavControl();
