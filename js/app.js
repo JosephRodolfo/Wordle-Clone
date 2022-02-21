@@ -1,4 +1,5 @@
 //import { validateGuess } from '/js/validation.js';
+//import { validateNumberInput } from '/js/validation.js';
 
 const container = document.getElementById("grid-board");
 let numberOfLetters = document.getElementById("number-of-letters");
@@ -18,7 +19,7 @@ let resetButtonArray = document.querySelectorAll(".reset");
 
 resetButtonArray[0].addEventListener("click",
                          function(){
-let resetInputArray = document.getElementsByClassName("changeNumberInput");
+let resetInputArray = document.getElementsByClassName("change-number-input1");
 
                           resetGame(resetInputArray[0].value);
                          },
@@ -27,7 +28,7 @@ let resetInputArray = document.getElementsByClassName("changeNumberInput");
 
 resetButtonArray[1].addEventListener("click",
                          function(){
-let resetInputArray = document.getElementsByClassName("changeNumberInput");
+let resetInputArray = document.getElementsByClassName("change-number-input1");
 
                           resetGame(resetInputArray[1].value);
                          },
@@ -251,6 +252,9 @@ function mainGame(resetHelper) {
       var theWord = scoreKeeper.theWordleWord.split("");
       scoreKeeper.row++;
       let wordGuess = document.getElementById("word-guess");
+
+
+
       let holder = wordGuess.value;
       scoreKeeper.theGuess = holder.split("");
       updateBoard(findIndex(theWord, scoreKeeper.theGuess), scoreKeeper.row);
@@ -404,4 +408,15 @@ function closeInstructionsFunc() {
 
 }
 
+}
+
+
+function validateNumberInput() {
+  const inpObj = document.querySelector(".change-number-input1");
+  if (!(inpObj.checkValidity())) {
+    alert("Enter a number 3 to 15!"); 
+  } else {
+  alert("You entered an acceptable number!")
+
+  }
 }

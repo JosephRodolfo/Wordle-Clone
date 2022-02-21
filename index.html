@@ -34,8 +34,8 @@
               <li>
                 <div class="dropdown-titles">Letters</div>
                 <div class="number-submit-container">
-                  <input type="number" class="changeNumberInput"/>
-                  <button type="submit" class="button reset">Reset</button>
+                  <input type="number" class="change-number-input1" min="3" max="15" required/>
+                  <button type="submit" class="button reset" onclick="validateNumberInput()" >Reset</button>
                 </div>
               </li>
               <li>
@@ -58,7 +58,7 @@
 
         <section id="input-container">
           <input type="text" id="word-guess"/>
-          <button type="submit" class="button" id="button-guess">Submit</button>
+          <button type="submit" class="button" onclick="validateGuess()" id="button-guess">Submit</button>
         </section>
       </main>
 
@@ -288,8 +288,8 @@
           <li>
             <div class="overlay-labels">Letters</div>
             <div class="number-submit-container">
-              <input type="number" class="changeNumberInput"/>
-              <button type="submit" class="button reset">Reset</button>
+              <input type="number" class="change-number-input"  min="3" max="15" required/>
+              <button type="submit" class="button reset" onclick="validateNumberInput()">Reset</button>
             </div>
           </li>
           <li>

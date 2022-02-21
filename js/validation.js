@@ -1,10 +1,16 @@
 //validateGuess function, takes the input word as string and length of the secret word and
 //returns true or false if it is correct number of letters and not non-letter chars
 
-export function validateGuess(guessWord, length) {
-  let numberOfLetters = length;
+export function validateGuess() {
 
-  if (alphaOnly(guessWord) && checkLength(guessWord, numberOfLetters)) {
+
+  let wordGuess = document.getElementById("word-guess");
+
+let holder = wordGuess.value;
+
+
+
+  if (alphaOnly(holder) && checkLength(holder, scoreKeeper.numberOfLettersInWord)) {
     console.log("word okay");
     return true;
   } else {
@@ -29,5 +35,17 @@ export function validateGuess(guessWord, length) {
 
   function checkLength(input, lengthOfWord) {
     return input.length === lengthOfWord;
+  }
+}
+
+
+
+ function validateNumberInput() {
+  const inpObj = document.querySelector(".change-number-input1");
+  if (inpObj.checkValidity()) {
+    alert("Enter a number 3 to 15!"); 
+  } else {
+  alert("You entered an acceptable number!")
+
   }
 }
