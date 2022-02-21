@@ -365,3 +365,26 @@ overlay.style.setProperty('width', "100%");
 
   }
 }
+
+
+let instructionsButton = document.querySelector(".instructions-mobile");
+
+instructionsButton.addEventListener('click', revealInstructions);
+
+function revealInstructions() {
+
+  var gridBodyWrapper = document.getElementById("grid-body-wrapper");
+console.log(gridBodyWrapper);
+var aside = document.querySelector("#instructions");
+
+aside.style.setProperty('display', 'flex');
+aside.style.setProperty('flex-direction', 'column');
+
+aside.style.setProperty('z-index', '99');
+aside.style.setProperty('position', 'absolute');
+aside.style.setProperty('height', '100vh');
+aside.style.setProperty('width', '100%');
+
+
+
+}
