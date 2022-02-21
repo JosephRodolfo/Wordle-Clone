@@ -1,14 +1,13 @@
 import { validateGuess } from '/js/validation.js';
 
-const container = document.getElementById("container");
+const container = document.getElementById("grid-board");
 let numberOfLetters = document.getElementById("number-of-letters");
 let drawBoardButton = document.getElementById("button-draw-board");
 const once = {
   once: true,
 };
-let mainButton = document.getElementById("button-main");
-drawBoardButton.addEventListener("click", startGame, once);
-
+let mainButton = document.getElementById("button-guess");
+//drawBoardButton.addEventListener("click", startGame, once);
 //Scorekeeper Object: keeps track of score, current row, guess word and the word you need
 // to figure out.
 
@@ -20,13 +19,15 @@ let scoreKeeper = {
   numberOfLettersInWord: 0,
 };
 
+startGame();
+
 //Draws board, lets you choose size
 
 function drawBoard(rows, cols) {
   container.style.setProperty("--grid-rows", rows);
   container.style.setProperty("--grid-cols", cols);
-  for (c = 0; c < rows; c++) {
-    for (i = 0; i < cols; i++) {
+  for (let c = 0; c < rows; c++) {
+    for (let i = 0; i < cols; i++) {
       let cell = document.createElement("div");
       cell.id = "b" + (c + 1) + "" + (i + 1);
       //     cell.innerText = "b" + (c + 1) + "" + (i + 1);
@@ -39,8 +40,8 @@ function drawBoard(rows, cols) {
 //startGame begins when you click submit on number of columns (letters),
 //draws board and kicks off main game flow;
 function startGame() {
-  drawBoard(6, numberOfLetters.value);
-  scoreKeeper.numberOfLettersInWord = numberOfLetters.value;
+  drawBoard(6, 5); // numberOfLetters.value); //
+  scoreKeeper.numberOfLettersInWord = 5;//numberOfLetters.value;
 
   mainGame();
 }
@@ -73,8 +74,16 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
     let missLetters = [...new Set(output)];
 
     for (let i = 0; i < missLetters.length; i++) {
-      let tempSquare = document.querySelector("#key-" + missLetters[i]);
-      tempSquare.style.backgroundColor = "rgb(93,93,93)";
+
+
+      let tempSquare = document.querySelectorAll(".key-" + missLetters[i] + ", .key-" + missLetters[i]+ ">*");
+      console.log(tempSquare);
+
+      tempSquare[0].style.backgroundColor = "rgb(93,93,93)";
+      tempSquare[1].style.backgroundColor = "rgb(93,93,93)";
+      tempSquare[2].style.backgroundColor = "rgb(93,93,93)";
+
+
     }
   }
 
@@ -83,17 +92,27 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
 
     allButLast--;
 
-    let keyLight = "#key-" + theGuessWord[allButLast];
+    let keyLight = ".key-" + theGuessWord[allButLast];
 
-    let tempSquare = document.querySelector(keyLight);
+    let tempSquare = document.querySelectorAll(keyLight);
     if (updaterInputArray[i].toString().slice(-1) == 6) {
-      if (tempSquare.style.backgroundColor == "green") {
-        tempSquare.style.backgroundColor = "green";
+      if (tempSquare[0].style.backgroundColor == "green") {
+        tempSquare[0].style.backgroundColor = "green";
+        tempSquare[1].style.backgroundColor = "green";
+        tempSquare[2].style.backgroundColor = "green";
+
+
       } else {
-        tempSquare.style.backgroundColor = "yellow";
+        tempSquare[0].style.backgroundColor = "yellow";
+        tempSquare[1].style.backgroundColor = "yellow";
+        tempSquare[2].style.backgroundColor = "yellow";
+
       }
     } else if (updaterInputArray[i].toString().slice(-1) == 5) {
-      tempSquare.style.backgroundColor = "green";
+      tempSquare[0].style.backgroundColor = "green";
+      tempSquare[1].style.backgroundColor = "green";
+      tempSquare[2].style.backgroundColor = "green";
+
     }
   }
 }
@@ -128,9 +147,10 @@ function findIndex(theWordleWord, theGuessWord) {
 
 //Inserts guess letters into the HTML, takes input word array.
 function placeLetters(inputWord) {
+  console.log("placeLetters");
   for (let i = 0; i < inputWord.length; i++) {
     let squareId = "#b" + scoreKeeper.row + "" + (i + 1);
-    //  console.log(squareId);
+      console.log(squareId);
     let tempLetterSquare = document.querySelector(squareId);
 
     tempLetterSquare.innerText = inputWord[i];
@@ -166,7 +186,7 @@ function mainGame(resetHelper) {
       scoreKeeper.numberOfLettersInWord
     );
 
-    mainButton.addEventListener("click", myFunction);
+   mainButton.addEventListener("click", myFunction);
 
     if (resetHelper === 1) {
       mainButton.removeEventListener("click", myFunction); //{ signal: controller.signal });
