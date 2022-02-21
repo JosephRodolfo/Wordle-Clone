@@ -1,4 +1,4 @@
-import { validateGuess } from '/js/validation.js';
+//import { validateGuess } from '/js/validation.js';
 
 const container = document.getElementById("grid-board");
 let numberOfLetters = document.getElementById("number-of-letters");
@@ -41,7 +41,7 @@ function drawBoard(rows, cols) {
 //draws board and kicks off main game flow;
 function startGame() {
   drawBoard(6, 5); // numberOfLetters.value); //
-  scoreKeeper.numberOfLettersInWord = 5;//numberOfLetters.value;
+  scoreKeeper.numberOfLettersInWord = 5; //numberOfLetters.value;
 
   mainGame();
 }
@@ -74,16 +74,23 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
     let missLetters = [...new Set(output)];
 
     for (let i = 0; i < missLetters.length; i++) {
-
-
-      let tempSquare = document.querySelectorAll(".key-" + missLetters[i] + ", .key-" + missLetters[i]+ ">*");
+      let tempSquare = document.querySelectorAll(
+        ".key-" + missLetters[i] + ", .key-" + missLetters[i] + ">*"
+      );
       console.log(tempSquare);
 
-      tempSquare[0].style.backgroundColor = "rgb(93,93,93)";
-      tempSquare[1].style.backgroundColor = "rgb(93,93,93)";
-      tempSquare[2].style.backgroundColor = "rgb(93,93,93)";
-
-
+      tempSquare[0].style.setProperty(
+        "background-color",
+        "var(--lightThemeGray)"
+      );
+      tempSquare[1].style.setProperty(
+        "background-color",
+        "var(--lightThemeGray)"
+      );
+      tempSquare[2].style.setProperty(
+        "background-color",
+        "var(--lightThemeGray)"
+      );
     }
   }
 
@@ -96,23 +103,46 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
 
     let tempSquare = document.querySelectorAll(keyLight);
     if (updaterInputArray[i].toString().slice(-1) == 6) {
-      if (tempSquare[0].style.backgroundColor == "green") {
-        tempSquare[0].style.backgroundColor = "green";
-        tempSquare[1].style.backgroundColor = "green";
-        tempSquare[2].style.backgroundColor = "green";
-
-
+      if (tempSquare[0].style.backgroundColor == "--lightThemeBlue") {
+        tempSquare[0].style.setProperty(
+          "background-color",
+          "var(--lightThemeBlue)"
+        );
+        tempSquare[1].style.setProperty(
+          "background-color",
+          "var(--lightThemeBlue)"
+        );
+        tempSquare[2].style.setProperty(
+          "background-color",
+          "var(--lightThemeBlue)"
+        );
       } else {
-        tempSquare[0].style.backgroundColor = "yellow";
-        tempSquare[1].style.backgroundColor = "yellow";
-        tempSquare[2].style.backgroundColor = "yellow";
-
+        tempSquare[0].style.setProperty(
+          "background-color",
+          "var(--lightThemeRed)"
+        );
+        tempSquare[1].style.setProperty(
+          "background-color",
+          "var(--lightThemeRed)"
+        );
+        tempSquare[2].style.setProperty(
+          "background-color",
+          "var(--lightThemeRed)"
+        );
       }
     } else if (updaterInputArray[i].toString().slice(-1) == 5) {
-      tempSquare[0].style.backgroundColor = "green";
-      tempSquare[1].style.backgroundColor = "green";
-      tempSquare[2].style.backgroundColor = "green";
-
+      tempSquare[0].style.setProperty(
+        "background-color",
+        "var(--lightThemeBlue)"
+      );
+      tempSquare[1].style.setProperty(
+        "background-color",
+        "var(--lightThemeBlue)"
+      );
+      tempSquare[2].style.setProperty(
+        "background-color",
+        "var(--lightThemeBlue)"
+      );
     }
   }
 }
@@ -150,7 +180,7 @@ function placeLetters(inputWord) {
   console.log("placeLetters");
   for (let i = 0; i < inputWord.length; i++) {
     let squareId = "#b" + scoreKeeper.row + "" + (i + 1);
-      console.log(squareId);
+    console.log(squareId);
     let tempLetterSquare = document.querySelector(squareId);
 
     tempLetterSquare.innerText = inputWord[i];
@@ -186,7 +216,7 @@ function mainGame(resetHelper) {
       scoreKeeper.numberOfLettersInWord
     );
 
-   mainButton.addEventListener("click", myFunction);
+    mainButton.addEventListener("click", myFunction);
 
     if (resetHelper === 1) {
       mainButton.removeEventListener("click", myFunction); //{ signal: controller.signal });
@@ -208,9 +238,8 @@ function mainGame(resetHelper) {
       if (checkForWin(theWord.length)) {
         resetGame();
       }
-      if (checkForLoss(scoreKeeper.row)){
+      if (checkForLoss(scoreKeeper.row)) {
         resetGame();
-
       }
     }
   }
@@ -240,7 +269,7 @@ function checkForLoss(row) {
   if (row == 6) {
     alert("You lost");
     return true;
-    }
+  }
 }
 
 //Resets game. Turns row back to 0, clears css on board and letters from guesses
@@ -269,3 +298,23 @@ function resetGame() {
     });
   }
 }
+//Resizes grid-items font-size to be responsive. 
+//Need to update with ability to change column/letter changes
+
+function getResponsiveFontSize() {
+  let gridBoardWidthVar = document.querySelector("#grid-board");
+  let width = gridBoardWidthVar.clientWidth;
+  console.log(width + "/ " + scoreKeeper.theWordleWord.length);
+
+  let value = (width / scoreKeeper.theWordleWord.length) * 0.65;
+  console.log(value);
+
+  let gridItems = document.querySelectorAll("#grid-board > *");
+
+  gridItems.forEach((element) =>
+    element.style.setProperty("font-size", value + "px")
+  );
+}
+
+getResponsiveFontSize();
+window.addEventListener("resize", getResponsiveFontSize);
