@@ -316,10 +316,10 @@ drawBoard(6, columns)
   mainGame(1);
 
   function resetKeyboard() {
-    let keyElements = document.querySelectorAll(".keyboard-letters, .flex-circle, .flex-circle>*");
+    let keyElements = document.querySelectorAll(".keyboard-letters, #all-letters-container >.flex-circle, #all-letters-container >.flex-circle>*");
 
     keyElements.forEach((element) => {
-      element.style.backgroundColor = "var(--lightThemeGray)";
+      element.style.backgroundColor = "var(--lightThemeBlack)";
     });
   }
 }

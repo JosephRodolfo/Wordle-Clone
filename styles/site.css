@@ -105,7 +105,7 @@ input[type="number"]::-webkit-outer-spin-button {
   display: grid;
   grid-gap: 5px;
   width: 100%;
-  grid-template-rows: repeat(var(--grid-rows), minmax(0, var(--grid-height)));
+ /* grid-template-rows: repeat(var(--grid-rows), minmax(0, var(--grid-height)));*/
   grid-template-columns: repeat(var(--grid-cols), minmax(0, var(--grid-width)));
   aspect-ratio: var(--grid-cols) / var(--grid-rows);
   max-height: 100%;
@@ -272,17 +272,6 @@ nav > ul > li:nth-child(5):hover {
 
 /*keyboard and miss or hit indicator all letters styles */
 
-.keyboard-letters {
-  background-color: var(--lightThemeGray);
-  font-family: CocogooseRegular, "sans-serif";
-  max-height: 58px;
-  flex-basis: 58px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  color: var(--lightThemeBlack);
-}
 
 #keyboard-container {
   height: 40vh;
@@ -307,7 +296,10 @@ nav > ul > li:nth-child(5):hover {
 }
 
 .keyboard-letters {
-  background-color: var(--lightThemeGray);
+  background-color: var(--lightThemeBlack);
+  max-height: 58px;
+  flex-basis: 58px;
+  font-family: CocogooseRegular, "sans-serif";
   height: 58px;
   max-width: 46px;
   min-width: 6px;
@@ -316,8 +308,20 @@ nav > ul > li:nth-child(5):hover {
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  color: var(--lightThemeBlack);
+  color: var(--lightThemeBackground);
 }
+
+/*.keyboard-letters {
+  background-color: var(--lightThemeGray);
+  font-family: CocogooseRegular, "sans-serif";
+  max-height: 58px;
+  flex-basis: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: var(--lightThemeBlack);
+} */
 
 #all-letters-container {
   display: none;
