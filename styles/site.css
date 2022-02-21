@@ -141,7 +141,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 100%;
 }
 
-.overlay .close-overlay {
+.overlay .close-overlay{
   position: absolute;
   top: 0.375em;
   right: 0.375em;
@@ -149,7 +149,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: var(--lightThemeBlack);
 }
 
-.overlay .close-overlay:hover {
+.overlay .close-overlay:hover{
   cursor: pointer;
   color: var(--lightThemeGray);
 }
@@ -386,6 +386,24 @@ aside > p {
 aside section {
   border-bottom: 1px solid black;
 }
+
+.close-instructions-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.close-instructions{
+ 
+  font-size: 60px;
+  color: var(--lightThemeBlack);
+}
+
+.close-instructions:hover{
+  cursor: pointer;
+  color: var(--lightThemeGray);
+}
+
 
 
 /*Number of letters settings and toggle light mode for mobile and full screen styles */
@@ -634,6 +652,15 @@ input[type="text"] {
 
   aside {
     display: flex;
+  }
+
+
+  #instructions {
+
+    display: flex;
+  }
+  .close-instructions {
+    display: none;
   }
 
   /*keyboard and all-letters hit or miss indicator styles */

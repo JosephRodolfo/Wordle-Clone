@@ -366,25 +366,42 @@ overlay.style.setProperty('width', "100%");
   }
 }
 
+mobileInstructionsToggle();
+function mobileInstructionsToggle() {
+
 
 let instructionsButton = document.querySelector(".instructions-mobile");
 
 instructionsButton.addEventListener('click', revealInstructions);
+let closeInstructions = document.querySelector(".close-instructions");
+
+closeInstructions.addEventListener('click', closeInstructionsFunc);
+let aside = document.querySelector("#instructions");
 
 function revealInstructions() {
 
-  var gridBodyWrapper = document.getElementById("grid-body-wrapper");
+
+  let gridBodyWrapper = document.getElementById("grid-body-wrapper");
 console.log(gridBodyWrapper);
-var aside = document.querySelector("#instructions");
 
 aside.style.setProperty('display', 'flex');
-aside.style.setProperty('flex-direction', 'column');
-
 aside.style.setProperty('z-index', '99');
 aside.style.setProperty('position', 'absolute');
 aside.style.setProperty('height', '100vh');
 aside.style.setProperty('width', '100%');
 
 
+}
+
+function closeInstructionsFunc() {
+
+  aside.style.setProperty('display', 'initial');
+  aside.style.setProperty('z-index', 'auto');
+
+  aside.style.setProperty('position', 'relative');
+
+  
+
+}
 
 }
