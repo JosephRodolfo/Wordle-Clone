@@ -295,31 +295,20 @@ function checkForLoss(row) {
   }
 }
 
-//Resets game. Turns row back to 0, clears css on board and letters from guesses
+//Resets game. Turns row back to 0, deletes grid-board html and redraws board. If statement
+//determines whether or not you've entered a new number of letters, if not keeps old number.
 //resets scorekeepers data. Passes 1 to mainGame() which indicates to remove event listener
 
 function resetGame(columns) {
   container.innerHTML="";
   console.log(scoreKeeper.numberOfLettersInWord);
-if (typeof columns =="undefined"){
- // console.log("arg undefined");
-  
+if (typeof columns =="undefined"){  
   drawBoard(6, scoreKeeper.numberOfLettersInWord);
 } else {
-
   scoreKeeper.numberOfLettersInWord = columns;
 drawBoard(6, columns)
 }
   scoreKeeper.row = 0;
-
-/*  resetBoardHtml();
-  function resetBoardHtml() {
-    let lettersList = document.querySelectorAll(".grid-item");
-    lettersList.forEach((element) => {
-      element.style.backgroundColor = "var(--lightThemeGray)";
-      element.innerText = "";
-    });
-  } */
   scoreKeeper.theWordleWord = "";
   resetKeyboard();
   mainGame(1);
