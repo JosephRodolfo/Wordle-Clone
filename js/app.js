@@ -11,15 +11,31 @@ let mainButton = document.getElementById("button-guess");
 //Scorekeeper Object: keeps track of score, current row, guess word and the word you need
 // to figure out.
 
+
+function createResizeResetButtons() {
+
 let resetButtonArray = document.querySelectorAll(".reset");
 
-console.log(resetButtonArray);
+resetButtonArray[0].addEventListener("click",
+                         function(){
+let resetInputArray = document.getElementsByClassName("changeNumberInput");
+
+                          resetGame(resetInputArray[0].value);
+                         },
+                         false); 
 
 
-resetButtonArray[0].addEventListener('click', resetGame);
-resetButtonArray[1].addEventListener('click', resetGame);
+resetButtonArray[1].addEventListener("click",
+                         function(){
+let resetInputArray = document.getElementsByClassName("changeNumberInput");
 
+                          resetGame(resetInputArray[1].value);
+                         },
+                         false); 
 
+                        }
+
+                        createResizeResetButtons();
 
 let scoreKeeper = {
   score: 0,
@@ -63,7 +79,7 @@ function updateBoard(updaterInputArray, row) {
     let firstChar = updaterInputArray[i].toString().slice(0, -1);
     let squareId = "#b" + row.toString() + "" + firstChar;
     let tempSquare = document.querySelector(squareId);
-    console.log(tempSquare);
+    //console.log(tempSquare);
     if (updaterInputArray[i].toString().slice(-1) == 6) {
       tempSquare.style.setProperty('background-color', 'var(--lightThemeRed)');
     } else if (updaterInputArray[i].toString().slice(-1) == 5) {
@@ -282,17 +298,28 @@ function checkForLoss(row) {
 //Resets game. Turns row back to 0, clears css on board and letters from guesses
 //resets scorekeepers data. Passes 1 to mainGame() which indicates to remove event listener
 
-function resetGame() {
+function resetGame(columns) {
+  container.innerHTML="";
+  console.log(scoreKeeper.numberOfLettersInWord);
+if (typeof columns =="undefined"){
+ // console.log("arg undefined");
+  
+  drawBoard(6, scoreKeeper.numberOfLettersInWord);
+} else {
+
+  scoreKeeper.numberOfLettersInWord = columns;
+drawBoard(6, columns)
+}
   scoreKeeper.row = 0;
 
-  resetBoardHtml();
+/*  resetBoardHtml();
   function resetBoardHtml() {
     let lettersList = document.querySelectorAll(".grid-item");
     lettersList.forEach((element) => {
       element.style.backgroundColor = "var(--lightThemeGray)";
       element.innerText = "";
     });
-  }
+  } */
   scoreKeeper.theWordleWord = "";
   resetKeyboard();
   mainGame(1);
