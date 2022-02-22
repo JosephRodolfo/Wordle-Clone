@@ -267,7 +267,7 @@ function checkForWin(wordLength) {
 
 function checkForLoss(row) {
   if (row == 6) {
-    alert("You lost");
+    alert("You lost. The answer was " + scoreKeeper.theWordleWord + ".");
     return true;
   }
 }
