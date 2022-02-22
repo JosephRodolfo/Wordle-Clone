@@ -12,32 +12,6 @@ let mainButton = document.getElementById("button-guess");
 //Scorekeeper Object: keeps track of score, current row, guess word and the word you need
 // to figure out.
 
-
-function createResizeResetButtons() {
-
-let resetButtonArray = document.querySelectorAll(".reset");
-
-resetButtonArray[0].addEventListener("click",
-                         function(){
-let resetInputArray = document.getElementsByClassName("change-number-input1");
-
-                          resetGame(resetInputArray[0].value);
-                         },
-                         false); 
-
-
-resetButtonArray[1].addEventListener("click",
-                         function(){
-let resetInputArray = document.getElementsByClassName("change-number-input1");
-
-                          resetGame(resetInputArray[1].value);
-                         },
-                         false); 
-
-                        }
-
-                        createResizeResetButtons();
-
 let scoreKeeper = {
   score: 0,
   row: 0,
@@ -80,11 +54,10 @@ function updateBoard(updaterInputArray, row) {
     let firstChar = updaterInputArray[i].toString().slice(0, -1);
     let squareId = "#b" + row.toString() + "" + firstChar;
     let tempSquare = document.querySelector(squareId);
-    //console.log(tempSquare);
     if (updaterInputArray[i].toString().slice(-1) == 6) {
-      tempSquare.style.setProperty('background-color', 'var(--lightThemeRed)');
+      tempSquare.style.setProperty("background-color", "var(--lightThemeRed)");
     } else if (updaterInputArray[i].toString().slice(-1) == 5) {
-      tempSquare.style.setProperty('background-color', "var(--lightThemeBlue)");
+      tempSquare.style.setProperty("background-color", "var(--lightThemeBlue)");
     }
   }
 }
@@ -253,8 +226,6 @@ function mainGame(resetHelper) {
       scoreKeeper.row++;
       let wordGuess = document.getElementById("word-guess");
 
-
-
       let holder = wordGuess.value;
       scoreKeeper.theGuess = holder.split("");
       updateBoard(findIndex(theWord, scoreKeeper.theGuess), scoreKeeper.row);
@@ -306,28 +277,29 @@ function checkForLoss(row) {
 //resets scorekeepers data. Passes 1 to mainGame() which indicates to remove event listener
 
 function resetGame(columns) {
-  container.innerHTML="";
-  console.log(scoreKeeper.numberOfLettersInWord);
-if (typeof columns =="undefined"){  
-  drawBoard(6, scoreKeeper.numberOfLettersInWord);
-} else {
-  scoreKeeper.numberOfLettersInWord = columns;
-drawBoard(6, columns)
-}
+  container.innerHTML = "";
+  if (typeof columns == "undefined") {
+    drawBoard(6, scoreKeeper.numberOfLettersInWord);
+  } else {
+    scoreKeeper.numberOfLettersInWord = columns;
+    drawBoard(6, columns);
+  }
   scoreKeeper.row = 0;
   scoreKeeper.theWordleWord = "";
   resetKeyboard();
   mainGame(1);
 
   function resetKeyboard() {
-    let keyElements = document.querySelectorAll(".keyboard-letters, #all-letters-container >.flex-circle, #all-letters-container >.flex-circle>*");
+    let keyElements = document.querySelectorAll(
+      ".keyboard-letters, #all-letters-container >.flex-circle, #all-letters-container >.flex-circle>*"
+    );
 
     keyElements.forEach((element) => {
       element.style.backgroundColor = "var(--lightThemeBlack)";
     });
   }
 }
-//Resizes grid-items font-size to be responsive. 
+//Resizes grid-items font-size to be responsive.
 //Need to update with ability to change column/letter changes
 
 function getResponsiveFontSize() {
@@ -346,77 +318,125 @@ function getResponsiveFontSize() {
 window.addEventListener("resize", getResponsiveFontSize);
 
 mobileNavControl();
-function mobileNavControl () {
+function mobileNavControl() {
   let mobileMenuButton = document.querySelector("nav>ul>li:nth-child(5)");
-  mobileMenuButton.addEventListener('click', openMobileNav);
+  mobileMenuButton.addEventListener("click", openMobileNav);
 
   let closeMobileMenuButton = document.querySelector(".close-overlay");
-  closeMobileMenuButton.addEventListener('click', closeMobileNav);
+  closeMobileMenuButton.addEventListener("click", closeMobileNav);
 
   function openMobileNav() {
-let overlay = document.querySelector(".overlay");
+    let overlay = document.querySelector(".overlay");
 
-overlay.style.setProperty('width', "100%");
-
-
-
+    overlay.style.setProperty("width", "100%");
   }
 
   function closeMobileNav() {
-    
     let overlay = document.querySelector(".overlay");
-    overlay.style.setProperty('width', "0%");
-
+    overlay.style.setProperty("width", "0%");
   }
 }
 
 mobileInstructionsToggle();
 function mobileInstructionsToggle() {
+  let instructionsButton = document.querySelector(".instructions-mobile");
 
+  instructionsButton.addEventListener("click", revealInstructions);
+  let closeInstructions = document.querySelector(".close-instructions");
 
-let instructionsButton = document.querySelector(".instructions-mobile");
+  closeInstructions.addEventListener("click", closeInstructionsFunc);
+  let aside = document.querySelector("#instructions");
 
-instructionsButton.addEventListener('click', revealInstructions);
-let closeInstructions = document.querySelector(".close-instructions");
+  function revealInstructions() {
+    let gridBodyWrapper = document.getElementById("grid-body-wrapper");
+    aside.style.setProperty("display", "flex");
+    aside.style.setProperty("z-index", "99");
+    aside.style.setProperty("position", "absolute");
+    aside.style.setProperty("height", "100vh");
+    aside.style.setProperty("width", "100%");
+  }
 
-closeInstructions.addEventListener('click', closeInstructionsFunc);
-let aside = document.querySelector("#instructions");
+  function closeInstructionsFunc() {
+    aside.style.setProperty("display", "initial");
+    aside.style.setProperty("z-index", "auto");
 
-function revealInstructions() {
-
-
-  let gridBodyWrapper = document.getElementById("grid-body-wrapper");
-console.log(gridBodyWrapper);
-
-aside.style.setProperty('display', 'flex');
-aside.style.setProperty('z-index', '99');
-aside.style.setProperty('position', 'absolute');
-aside.style.setProperty('height', '100vh');
-aside.style.setProperty('width', '100%');
-
-
-}
-
-function closeInstructionsFunc() {
-
-  aside.style.setProperty('display', 'initial');
-  aside.style.setProperty('z-index', 'auto');
-
-  aside.style.setProperty('position', 'relative');
-
-  
-
-}
-
-}
-
-
-function validateNumberInput() {
-  const inpObj = document.querySelector(".change-number-input1");
-  if (!(inpObj.checkValidity())) {
-    alert("Enter a number 3 to 15!"); 
-  } else {
-  alert("You entered an acceptable number!")
-
+    aside.style.setProperty("position", "relative");
   }
 }
+
+function validateNumberInput1() {
+  let inpObj = document.querySelector(".change-number-input1");
+  if (!inpObj.checkValidity()) {
+    alert("Enter a number 3 to 15!");
+  } else {
+    resetGame(inpObj.value);
+  }
+}
+
+function validateNumberInput2() {
+  let inpObj = document.querySelector(".change-number-input2");
+  if (!inpObj.checkValidity()) {
+    alert("Enter a number 3 to 15!");
+  } else {
+    resetGame(inpObj.value);
+  }
+}
+
+darkThemeToggle();
+
+function darkThemeToggle() {
+
+var root = document.querySelector(':root');
+
+
+let toggleSwitches = document.querySelectorAll(".dark-mode-toggle");
+toggleSwitches.forEach(element => element.addEventListener('change', turnOnOrOffDarkMode))
+function turnOnOrOffDarkMode () {
+if (this.id =="toggle1") {
+toggleSwitches[1].checked = toggleSwitches[0].checked;
+} else if (this.id =="toggle2")
+{
+  toggleSwitches[0].checked = toggleSwitches[1].checked;
+
+}
+
+if (toggleSwitches[0].checked){
+  root.style.setProperty('--lightThemeBlue', "#245262");
+  root.style.setProperty('--lightThemeGray', "");
+  root.style.setProperty('--lightThemeRed', "#6600ff");
+  root.style.setProperty('--lightThemeBlack', "white");
+  root.style.setProperty('--lightThemeBackground', "#18191A");
+  root.style.setProperty('--lightThemeDropDown', "#f2f2f2");
+  
+
+
+
+} else {
+
+  root.style.setProperty('--lightThemeBlue', "rgb(57, 126, 135)");
+  root.style.setProperty('--lightThemeGray', "rgb(94, 94, 94)");
+  root.style.setProperty('--lightThemeRed', "rgb(231, 150, 150)");
+  root.style.setProperty('--lightThemeBlack', "black");
+  root.style.setProperty('--lightThemeBackground', "#f7f7f7");
+  root.style.setProperty('--lightThemeDropDown', "#f2f2f2");
+
+
+
+}
+
+
+
+
+}
+//From left to right: background, card, hover color, primary text, secondary text
+}
+
+
+
+/*--lightThemeBlue: rgb(57, 126, 135);
+--lightThemeGray: rgb(94, 94, 94)
+--lightThemeRed: rgb(231, 150, 150)
+--lightThemeBlack: black
+--lightThemeBackground: #f7f7f7
+--lightThemeDropDown: #f2f2f2
+*/

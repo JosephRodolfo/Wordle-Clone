@@ -48,6 +48,7 @@ p {
   font-size: 0.875rem;
   font-family: CocogooseSemiLight;
   font-weight: 100;
+  color: var(--lightThemeBlack);
 }
 
 body {
@@ -170,7 +171,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .overlay-labels {
   text-decoration: none;
   font-size: 2em;
-  color: #000000;
+  color: var(--lightThemeBlack);
   display: block;
   font-family: CocoGooseRegular;
 
@@ -250,12 +251,12 @@ nav > ul > li > ul {
 nav > ul > li:nth-child(5) {
   position: absolute;
   right: 1em;
-  border: 2px solid black;
+  border: 2px solid var(--lightThemeBlack);
   top: 2em;
   border-radius: 100px;
   height: 4em;
   width: 4em;
-  background-color: whitesmoke;
+  background-color: var(--lightThemeBackground);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -483,11 +484,11 @@ input[type="number"] {
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--lightThemeBlue);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px var(--lightThemeBlue);
 
   box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
     5px 5px 0px 0px;

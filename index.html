@@ -35,14 +35,14 @@
                 <div class="dropdown-titles">Letters</div>
                 <div class="number-submit-container">
                   <input type="number" class="change-number-input1" min="3" max="15" required/>
-                  <button type="submit" class="button reset" onclick="validateNumberInput()" >Reset</button>
+                  <button type="submit" class="button reset" onclick="validateNumberInput1()" >Reset</button>
                 </div>
               </li>
               <li>
                 <div class="dropdown-titles">Dark Mode</div>
 
                 <label class="switch">
-                  <input type="checkbox" />
+                  <input type="checkbox" id="toggle1" class="dark-mode-toggle" />
                   <span class="slider round"></span>
                 </label>
               </li>
@@ -288,15 +288,15 @@
           <li>
             <div class="overlay-labels">Letters</div>
             <div class="number-submit-container">
-              <input type="number" class="change-number-input"  min="3" max="15" required/>
-              <button type="submit" class="button reset" onclick="validateNumberInput()">Reset</button>
+              <input type="number" class="change-number-input2"  min="3" max="15" required/>
+              <button type="submit" class="button reset" onclick="validateNumberInput2()">Reset</button>
             </div>
           </li>
           <li>
             <div class="overlay-labels">Dark Mode</div>
 
-            <label class="switch">
-              <input type="checkbox" />
+            <label class="switch" >
+              <input type="checkbox" id="toggle2"  class="dark-mode-toggle"/>
               <span class="slider round"></span>
             </label>
           </li>
