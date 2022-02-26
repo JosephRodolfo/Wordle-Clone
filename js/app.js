@@ -222,11 +222,14 @@ function mainGame(resetHelper) {
     }
 
     function myFunction() {
+
+      let wordGuess = document.getElementById("word-guess");
+      let holder = wordGuess.value;
+
+if (validateGuess(holder, scoreKeeper.numberOfLettersInWord)) {
       var theWord = scoreKeeper.theWordleWord.split("");
       scoreKeeper.row++;
-      let wordGuess = document.getElementById("word-guess");
 
-      let holder = wordGuess.value;
       scoreKeeper.theGuess = holder.split("");
       updateBoard(findIndex(theWord, scoreKeeper.theGuess), scoreKeeper.row);
       updateKeyboard(
@@ -246,6 +249,12 @@ function mainGame(resetHelper) {
           resetGame()
         );
       }
+
+    } else {
+
+      return;
+
+    }
     }
   }
 }
@@ -460,3 +469,41 @@ function overlayAlert(alertMessage, callbackFunction) {
 
 
 }
+
+function validateGuess(guessWord, numberOfLetters) {
+
+
+ 
+
+
+
+  if (alphaOnly(guessWord) && checkLength(guessWord, numberOfLetters)) {
+    return true;
+  } else {
+    alert("Please ensure your guess comprises only the correct amount of letters and no letters!");
+
+    return false;
+  }
+
+  function alphaOnly(input) {
+    let temp = input.toLowerCase();
+
+    for (let i = 0; i < input.length; i++) {
+      let key = temp.charCodeAt(i);
+      if (key >= 97 && key <= 122) {
+        if (i == input.length - 1) {
+          return true;
+        }
+      } else {
+        return false;
+      }
+    }
+  }
+
+  function checkLength(input, lengthOfWord) {
+    return input.length === lengthOfWord;
+  }
+}
+
+
+
