@@ -236,10 +236,15 @@ function mainGame(resetHelper) {
       );
       placeLetters(scoreKeeper.theGuess);
       if (checkForWin(theWord.length)) {
-        resetGame();
+        //resetGame();
+        overlayAlert("You won in " + scoreKeeper.row, resetGame());
       }
       if (checkForLoss(scoreKeeper.row)) {
-        resetGame();
+        //  resetGame();
+        overlayAlert(
+          "You lost! The word was " + scoreKeeper.theWordleWord,
+          resetGame()
+        );
       }
     }
   }
@@ -258,7 +263,10 @@ function checkForWin(wordLength) {
     }
     if (score === wordLength) {
       let displayScore = scoreKeeper.row;
-      alert("you win in " + displayScore);
+
+      overlayAlert("you win in " + displayScore);
+
+      //  alert("you win in " + displayScore);
 
       return true;
     }
@@ -267,7 +275,7 @@ function checkForWin(wordLength) {
 
 function checkForLoss(row) {
   if (row == 6) {
-    alert("You lost. The answer was " + scoreKeeper.theWordleWord + ".");
+    //  alert("You lost. The answer was " + scoreKeeper.theWordleWord + ".");
     return true;
   }
 }
@@ -385,53 +393,37 @@ function validateNumberInput2() {
 darkThemeToggle();
 
 function darkThemeToggle() {
+  var root = document.querySelector(":root");
 
-var root = document.querySelector(':root');
+  let toggleSwitches = document.querySelectorAll(".dark-mode-toggle");
+  toggleSwitches.forEach((element) =>
+    element.addEventListener("change", turnOnOrOffDarkMode)
+  );
+  function turnOnOrOffDarkMode() {
+    if (this.id == "toggle1") {
+      toggleSwitches[1].checked = toggleSwitches[0].checked;
+    } else if (this.id == "toggle2") {
+      toggleSwitches[0].checked = toggleSwitches[1].checked;
+    }
 
-
-let toggleSwitches = document.querySelectorAll(".dark-mode-toggle");
-toggleSwitches.forEach(element => element.addEventListener('change', turnOnOrOffDarkMode))
-function turnOnOrOffDarkMode () {
-if (this.id =="toggle1") {
-toggleSwitches[1].checked = toggleSwitches[0].checked;
-} else if (this.id =="toggle2")
-{
-  toggleSwitches[0].checked = toggleSwitches[1].checked;
-
+    if (toggleSwitches[0].checked) {
+      root.style.setProperty("--lightThemeBlue", "#245262");
+      root.style.setProperty("--lightThemeGray", "");
+      root.style.setProperty("--lightThemeRed", "#6600ff");
+      root.style.setProperty("--lightThemeBlack", "white");
+      root.style.setProperty("--lightThemeBackground", "#18191A");
+      root.style.setProperty("--lightThemeDropDown", "#f2f2f2");
+    } else {
+      root.style.setProperty("--lightThemeBlue", "rgb(57, 126, 135)");
+      root.style.setProperty("--lightThemeGray", "rgb(94, 94, 94)");
+      root.style.setProperty("--lightThemeRed", "rgb(231, 150, 150)");
+      root.style.setProperty("--lightThemeBlack", "black");
+      root.style.setProperty("--lightThemeBackground", "#f7f7f7");
+      root.style.setProperty("--lightThemeDropDown", "#f2f2f2");
+    }
+  }
+  //From left to right: background, card, hover color, primary text, secondary text
 }
-
-if (toggleSwitches[0].checked){
-  root.style.setProperty('--lightThemeBlue', "#245262");
-  root.style.setProperty('--lightThemeGray', "");
-  root.style.setProperty('--lightThemeRed', "#6600ff");
-  root.style.setProperty('--lightThemeBlack', "white");
-  root.style.setProperty('--lightThemeBackground', "#18191A");
-  root.style.setProperty('--lightThemeDropDown', "#f2f2f2");
-  
-
-
-
-} else {
-
-  root.style.setProperty('--lightThemeBlue', "rgb(57, 126, 135)");
-  root.style.setProperty('--lightThemeGray', "rgb(94, 94, 94)");
-  root.style.setProperty('--lightThemeRed', "rgb(231, 150, 150)");
-  root.style.setProperty('--lightThemeBlack', "black");
-  root.style.setProperty('--lightThemeBackground', "#f7f7f7");
-  root.style.setProperty('--lightThemeDropDown', "#f2f2f2");
-
-
-
-}
-
-
-
-
-}
-//From left to right: background, card, hover color, primary text, secondary text
-}
-
-
 
 /*--lightThemeBlue: rgb(57, 126, 135);
 --lightThemeGray: rgb(94, 94, 94)
@@ -440,3 +432,31 @@ if (toggleSwitches[0].checked){
 --lightThemeBackground: #f7f7f7
 --lightThemeDropDown: #f2f2f2
 */
+
+function overlayAlert(alertMessage, callbackFunction) {
+  let overlayMessageHolder = document.querySelector(".overlay-alert-card>span");
+
+  overlayMessageHolder.innerText = alertMessage;
+  let overlay = document.querySelector(".overlay-alert-wrapper");
+
+  overlay.style.setProperty("opacity", "100%");
+  overlay.style.setProperty("z-index", "99");
+  const once = {
+    once: true,
+  };
+
+  function resetGameAndResetOverlay() {
+  
+    let overlay = document.querySelector(".overlay-alert-wrapper");
+
+    overlay.style.setProperty("opacity", "0");
+    overlay.style.setProperty("z-index", "-2");
+    callbackFunction;
+  }
+
+  let overlayResetButton = document.querySelector("#close-alert-button");
+  overlayResetButton.addEventListener("click", resetGameAndResetOverlay, once);
+
+
+
+}
