@@ -8,16 +8,19 @@ const once = {
   once: true,
 };
 let mainButton = document.getElementById("button-guess");
+let wordGuessInput = document.getElementById("word-guess");
 //drawBoardButton.addEventListener("click", startGame, once);
 //Scorekeeper Object: keeps track of score, current row, guess word and the word you need
 // to figure out.
+//lockoutFocus prevents key enter from firing when you win/you lose overlay is on. resets to zero when overlay
+//opens and closes. 
 
 let scoreKeeper = {
-  score: 0,
+  lockoutFocus: 0,
   row: 0,
   theWordleWord: "",
   theGuess: "",
-  numberOfLettersInWord: 0,
+  numberOfLettersInWord: 0
 };
 
 startGame();
@@ -210,21 +213,33 @@ function getWord(numberLetters) {
 function mainGame(resetHelper) {
   asynFunction();
 
+
   async function asynFunction() {
     scoreKeeper.theWordleWord = await getWord(
       scoreKeeper.numberOfLettersInWord
     );
+//Creates event listeners for text input (enter button only) and submit button
+    if (resetHelper !==1) {
 
     mainButton.addEventListener("click", myFunction);
+    wordGuessInput.addEventListener("keydown", function(e){
+      console.log("test");
+      if(e.key == 'Enter' && scoreKeeper.lockoutFocus==0) {myFunction()}}
+ )}
 
-    if (resetHelper === 1) {
-      mainButton.removeEventListener("click", myFunction); //{ signal: controller.signal });
-    }
+    /*if (resetHelper === 1) {
+      mainButton.removeEventListener("click", myFunction);
+      wordGuessInput.removeEventListener(("keyup", function(e){
+        console.log("test");
+        if(e.key == 'Enter') {myFunction()}}, false
+   ))
+    }*/
 
     function myFunction() {
 
       let wordGuess = document.getElementById("word-guess");
       let holder = wordGuess.value;
+      wordGuess.value = "";
 
 if (validateGuess(holder, scoreKeeper.numberOfLettersInWord)) {
       var theWord = scoreKeeper.theWordleWord.split("");
@@ -274,9 +289,6 @@ function checkForWin(wordLength) {
       let displayScore = scoreKeeper.row;
 
       overlayAlert("you win in " + displayScore);
-
-      //  alert("you win in " + displayScore);
-
       return true;
     }
   }
@@ -443,6 +455,8 @@ function darkThemeToggle() {
 */
 
 function overlayAlert(alertMessage, callbackFunction) {
+  scoreKeeper.lockoutFocus=1;
+
   let overlayMessageHolder = document.querySelector(".overlay-alert-card>span");
 
   overlayMessageHolder.innerText = alertMessage;
@@ -455,7 +469,8 @@ function overlayAlert(alertMessage, callbackFunction) {
   };
 
   function resetGameAndResetOverlay() {
-  
+    scoreKeeper.lockoutFocus=0;
+
     let overlay = document.querySelector(".overlay-alert-wrapper");
 
     overlay.style.setProperty("opacity", "0");
@@ -464,6 +479,8 @@ function overlayAlert(alertMessage, callbackFunction) {
   }
 
   let overlayResetButton = document.querySelector("#close-alert-button");
+
+  
   overlayResetButton.addEventListener("click", resetGameAndResetOverlay, once);
 
 
