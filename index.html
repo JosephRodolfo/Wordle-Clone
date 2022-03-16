@@ -13,7 +13,7 @@
       <nav>
         <ul>
           <li class="hamburger-button">
-            <img src="assets/icons8-menu.svg" />
+            <img class="svgImage" src="assets/hamburger.svg" />
             <ul class="dropdown left">
               <li><a href="#test">Home</a></li>
               <li><a href="#test">Games</a></li>
@@ -27,19 +27,19 @@
               <li><a href="#test">About</a></li>
             </ul>
           </li>
-          <li class="title">WORDLE</li>
+          <li class="title" id="wordle-title">WORDLE</li>
           <li class="right">
-            <img src="assets/gear-svgrepo-com.svg" />
+            <img class="svgImage" src="assets/gear.svg" />
             <ul class="dropdown right">
               <li>
-                <div class="dropdown-titles">Letters</div>
+                <div class="dropdown-titles"><span>Letters</span></div>
                 <div class="number-submit-container">
                   <input type="number" class="change-number-input1" min="3" max="15" required/>
                   <button type="submit" class="button reset" onclick="validateNumberInput1()" >Reset</button>
                 </div>
               </li>
               <li>
-                <div class="dropdown-titles">Dark Mode</div>
+                <div class="dropdown-titles"><span>Dark Mode</span></div>
 
                 <label class="switch">
                   <input type="checkbox" id="toggle1" class="dark-mode-toggle" />
@@ -270,7 +270,7 @@
                 class="flex-inner-circle"
                 style="background-color: var(--lightThemeGray)"
               >
-                W
+                U
               </div>
             </div>
             <div class="flex-circle demo-key">
@@ -289,7 +289,7 @@
             <div class="overlay-labels">Letters</div>
             <div class="number-submit-container">
               <input type="number" class="change-number-input2"  min="3" max="15" required/>
-              <button type="submit" class="button reset" onclick="validateNumberInput2()">Reset</button>
+              <button type="submit" class="button reset" onclick="validateNumberInput2">Reset</button>
             </div>
           </li>
           <li>

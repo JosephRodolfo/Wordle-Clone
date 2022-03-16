@@ -17,6 +17,9 @@
 
 /* Base styles*/
 
+
+
+
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -42,14 +45,16 @@ html {
   --lightThemeBlack: black;
   --lightThemeBackground: #f7f7f7;
   --lightThemeDropDown: #f2f2f2;
+  --svgFilterSettings: none;
 }
 
 p {
   font-size: 0.875rem;
-  font-family: CocogooseSemiLight;
+  font-family: CocogooseSemiLight, sans-serif;
   font-weight: 100;
   color: var(--lightThemeBlack);
 }
+
 
 body {
   width: 100vw;
@@ -92,6 +97,10 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden;
 }
 
+
+.svgImages{
+  fill: blue;
+}
 #grid-board-and-input {
   background-color: var(--lightThemeBackground);
   grid-area: board-input;
@@ -118,7 +127,7 @@ input[type="number"]::-webkit-outer-spin-button {
   aspect-ratio: 1/1;
   border-radius: 100%;
   font-size: 2.8125rem;
-  font-family: CocogooseRegular;
+  font-family: CocogooseRegular, sans-serif;
   text-align: center;
   color: var(--lightThemeBackground);
   }
@@ -270,6 +279,10 @@ nav > ul > li > img {
   height: auto;
 }
 
+.svgImage {
+  filter: var(--svgFilterSettings);
+}
+
 nav > ul > li > ul {
   display: none;
 }
@@ -279,7 +292,13 @@ nav > ul > li > ul {
   display: block;
   top: -0.5em;
   position: relative;
+  
+
 }
+#wordle-title {
+  color: var(--lightThemeBlack);
+}
+
 
 nav > ul > li:nth-child(5) {
   position: absolute;
@@ -381,6 +400,8 @@ nav > ul > li:nth-child(5):hover {
     color: var(--lightThemeBackground);
   }
 
+
+
 /*instructions aside styles*/
 
 aside {
@@ -406,7 +427,7 @@ aside > p {
 
 
 aside section {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--lightThemeBlack);
 }
 
 .close-instructions-container {
@@ -459,7 +480,7 @@ input[type="number"] {
 .number-submit-container > button {
   border: none;
   background-color: var(--lightThemeGray);
-  font-family: CocoGooseRegular;
+  font-family: CocoGooseRegular, sans-serif;
   border: 0;
   height: 3em;
 
@@ -554,7 +575,7 @@ input[type="text"] {
   text-transform: uppercase;
   color: var(--lightThemeBlack);
   cursor: pointer;
-  border: 3px solid;
+  border: 3px solid var(--lightThemeBlack);
   padding: 0.25em 0.5em;
   box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
     5px 5px 0px 0px;
@@ -572,8 +593,11 @@ input[type="text"] {
   left: .25em;
 }
 
+
+
 /*Media query 1*/
 @media only screen and (min-width: 600px) {
+
   /*grid layout style*/
 
   #grid-body-wrapper {
@@ -596,25 +620,28 @@ input[type="text"] {
     height: 150px;
     top: 50px;
     width: 37.5%;
-    background-color: var(--lightThemeDropDown);
+  }
+
+  ul li ul.dropdown.right {
+  
+
+
   }
 
   ul li ul.dropdown.right {
     right: 0;
-  }
-
-  ul li ul.dropdown.right {
     height: 0;
     position: absolute;
     top: 3.125em;
     width: 37.5%;
     overflow: hidden;
     transition: height 1s;
-    background-color: var(--lightThemeBackground);
+
   }
 
   ul li:hover ul.dropdown.right {
     right: 0;
+
   }
 
   .dropdown.right {
@@ -623,11 +650,11 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: var(--lightThemeBackground);
   }
 
   ul li ul.dropdown.right li {
     margin: 0;
+
   }
 
   .dropdown.right li {
@@ -637,6 +664,10 @@ input[type="text"] {
     width: 100%;
     margin: 1em 0;
     height: min-content;
+  }
+
+  .dropdown-titles{
+    color: var(--lightThemeBlack);
   }
 
   .number-submit-container {
@@ -656,6 +687,7 @@ input[type="text"] {
     display: block;
     position: relative;
     top: -0.5em;
+
   }
 
   nav ul li {

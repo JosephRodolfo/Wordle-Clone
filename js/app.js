@@ -429,11 +429,12 @@ function darkThemeToggle() {
 
     if (toggleSwitches[0].checked) {
       root.style.setProperty("--lightThemeBlue", "#245262");
-      root.style.setProperty("--lightThemeGray", "");
+      root.style.setProperty("--lightThemeGray", "rgb(94, 94, 94)");
       root.style.setProperty("--lightThemeRed", "#6600ff");
       root.style.setProperty("--lightThemeBlack", "white");
       root.style.setProperty("--lightThemeBackground", "#18191A");
       root.style.setProperty("--lightThemeDropDown", "#f2f2f2");
+      root.style.setProperty("--svgFilterSettings", 'invert(100%) sepia(0%) saturate(6%) hue-rotate(182deg) brightness(115%) contrast(94%)')
     } else {
       root.style.setProperty("--lightThemeBlue", "rgb(57, 126, 135)");
       root.style.setProperty("--lightThemeGray", "rgb(94, 94, 94)");
@@ -441,6 +442,8 @@ function darkThemeToggle() {
       root.style.setProperty("--lightThemeBlack", "black");
       root.style.setProperty("--lightThemeBackground", "#f7f7f7");
       root.style.setProperty("--lightThemeDropDown", "#f2f2f2");
+      root.style.setProperty("--svgFilterSettings", 'none')
+
     }
   }
   //From left to right: background, card, hover color, primary text, secondary text
