@@ -1,3 +1,4 @@
+
 class WordInput extends React.Component {
   constructor(props) {
     super(props);
@@ -7,12 +8,13 @@ class WordInput extends React.Component {
     this.wipeLetters = this.wipeLetters.bind(this);
     this.state = {
       array: [],
-    };
+  };
   }
 
   wipeLetters() {
     let t = [];
-    this.setState({ array: t }, this.renderLetters);
+    this.setState({ array: t}, this.renderLetters);
+
   }
 
   logLetters(e) {
@@ -23,7 +25,15 @@ class WordInput extends React.Component {
   }
 
   submitFunction(e) {
+
     e.preventDefault();
+
+    const inputValueTemp = this.inputValue.value;
+    if(inputValueTemp.length > 0){
+
+        this.inputValue.value = '';     //here
+
+    } 
    // let wordGuess = document.getElementById("word-guess");
     let holder = this.state.array.join("");
 //    wordGuess.value = "";
@@ -71,11 +81,12 @@ class WordInput extends React.Component {
   render() {
     return (
       <form onSubmit={this.submitFunction}>
+      
+
+        <input type="text"  ref= {el => this.inputValue = el}  id="word-guess" onChange={this.logLetters} />
         <button type="submit" className="button" id="button-guess">
           Submit
         </button>
-
-        <input type="text" id="word-guess" onChange={this.logLetters} />
       </form>
     );
   }
@@ -90,12 +101,6 @@ class LetterGuesses extends React.Component {
     return <div>{this.props.letterToShow} </div>;
   }
 }
-
-ReactDOM.render(
-  <WordInput />,
-  document.getElementById("word-guess-input-container")
-);
-
 class KeyBoardContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -166,18 +171,16 @@ class KeyBoardContainer extends React.Component {
         scoreKeeper.theGuess = holder.split("");
       
         updateBoard(findIndex(theWord, scoreKeeper.theGuess), scoreKeeper.row);
-     /*  updateKeyboard(
+       updateKeyboard(
           findIndex(theWord, scoreKeeper.theGuess),
           scoreKeeper.theGuess,
           theWord
-        );*/
+        );
         placeLetters(scoreKeeper.theGuess);
         if (checkForWin(theWord.length)) {
-          //resetGame();
           overlayAlert("You won in " + scoreKeeper.row, resetGame());
         }
         if (checkForLoss(scoreKeeper.row)) {
-          //  resetGame();
           overlayAlert(
             "You lost! The word was " + scoreKeeper.theWordleWord,
             resetGame()
@@ -239,4 +242,9 @@ class KeyBoardContainer extends React.Component {
 ReactDOM.render(
   <KeyBoardContainer />,
   document.getElementById("keyboard-container")
+);
+
+ReactDOM.render(
+  <WordInput />,
+  document.getElementById("word-guess-input-container")
 );
