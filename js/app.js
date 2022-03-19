@@ -219,7 +219,7 @@ function mainGame(resetHelper) {
 //Creates event listeners for text input (enter button only) and submit button
     if (resetHelper !==1) {
 
-    mainButton.addEventListener("click", myFunction);
+  //  mainButton.addEventListener("click", myFunction);
     wordGuessInput.addEventListener("keydown", function(e){
       if(e.key == 'Enter' && scoreKeeper.lockoutFocus==0) {myFunction()}}
  )}
@@ -232,42 +232,7 @@ function mainGame(resetHelper) {
    ))
     }*/
 
-    function myFunction() {
 
-      let wordGuess = document.getElementById("word-guess");
-      let holder = wordGuess.value;
-      wordGuess.value = "";
-
-if (validateGuess(holder, scoreKeeper.numberOfLettersInWord)) {
-      var theWord = scoreKeeper.theWordleWord.split("");
-      scoreKeeper.row++;
-
-      scoreKeeper.theGuess = holder.split("");
-      updateBoard(findIndex(theWord, scoreKeeper.theGuess), scoreKeeper.row);
-      updateKeyboard(
-        findIndex(theWord, scoreKeeper.theGuess),
-        scoreKeeper.theGuess,
-        theWord
-      );
-      placeLetters(scoreKeeper.theGuess);
-      if (checkForWin(theWord.length)) {
-        //resetGame();
-        overlayAlert("You won in " + scoreKeeper.row, resetGame());
-      }
-      if (checkForLoss(scoreKeeper.row)) {
-        //  resetGame();
-        overlayAlert(
-          "You lost! The word was " + scoreKeeper.theWordleWord,
-          resetGame()
-        );
-      }
-
-    } else {
-
-      return;
-
-    }
-    }
   }
 }
 
