@@ -8,7 +8,7 @@ const once = {
   once: true,
 };
 let mainButton = document.getElementById("button-guess");
-let wordGuessInput = document.getElementById("word-guess");
+//let wordGuessInput = document.getElementById("word-guess");
 //drawBoardButton.addEventListener("click", startGame, once);
 //Scorekeeper Object: keeps track of score, current row, guess word and the word you need
 // to figure out.
@@ -75,12 +75,12 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
       return theWordleWord.indexOf(obj) == -1;
     });
     let missLetters = [...new Set(output)];
-
+console.log(missLetters);
     for (let i = 0; i < missLetters.length; i++) {
       let tempSquare = document.querySelectorAll(
-        ".key-" + missLetters[i] + ", .key-" + missLetters[i] + ">*"
+        `.key-${missLetters[i]}, .key-${missLetters[i]}>*`
       );
-
+console.log(document.querySelector(".key-b"));
       tempSquare[0].style.setProperty(
         "background-color",
         "var(--lightThemeGray)"
@@ -217,12 +217,12 @@ function mainGame(resetHelper) {
       scoreKeeper.numberOfLettersInWord
     );
 //Creates event listeners for text input (enter button only) and submit button
-    if (resetHelper !==1) {
+  /*  if (resetHelper !==1) {
 
   //  mainButton.addEventListener("click", myFunction);
-    wordGuessInput.addEventListener("keydown", function(e){
+  wordGuessInput.addEventListener("keydown", function(e){
       if(e.key == 'Enter' && scoreKeeper.lockoutFocus==0) {myFunction()}}
- )}
+ )}*/
 
     /*if (resetHelper === 1) {
       mainButton.removeEventListener("click", myFunction);
