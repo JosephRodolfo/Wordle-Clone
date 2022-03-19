@@ -180,11 +180,9 @@ function findIndex(theWordleWord, theGuessWord) {
 //Inserts guess letters into the HTML, takes input word array.
 function placeLetters(inputWord) {
   getResponsiveFontSize();
-
   for (let i = 0; i < inputWord.length; i++) {
     let squareId = "#b" + scoreKeeper.row + "" + (i + 1);
     let tempLetterSquare = document.querySelector(squareId);
-
     tempLetterSquare.innerText = inputWord[i];
   }
 }
@@ -223,7 +221,6 @@ function mainGame(resetHelper) {
 
     mainButton.addEventListener("click", myFunction);
     wordGuessInput.addEventListener("keydown", function(e){
-      console.log("test");
       if(e.key == 'Enter' && scoreKeeper.lockoutFocus==0) {myFunction()}}
  )}
 
