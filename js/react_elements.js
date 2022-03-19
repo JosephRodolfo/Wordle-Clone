@@ -4,9 +4,17 @@ class WordInput extends React.Component {
     this.logLetters = this.logLetters.bind(this);
     this.renderLetters = this.renderLetters.bind(this);
     this.submitFunction = this.submitFunction.bind(this);
+    this.wipeLetters = this.wipeLetters.bind(this);
     this.state = {
       array: [],
     };
+  }
+
+  wipeLetters(){
+
+    let t = [];
+    this.setState({ array: t }, this.renderLetters);
+
   }
 
   logLetters(e) {
@@ -46,6 +54,9 @@ class WordInput extends React.Component {
         );
       }
     } else {
+
+this.wipeLetters();
+
       return;
     }
   }

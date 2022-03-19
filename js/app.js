@@ -462,7 +462,7 @@ function validateGuess(guessWord, numberOfLetters) {
   if (alphaOnly(guessWord) && checkLength(guessWord, numberOfLetters)) {
     return true;
   } else {
-    alert("Please ensure your guess comprises only the correct amount of letters and no letters!");
+    alert("Please ensure your guess comprises only the correct amount of letters and no numbers!");
 
     return false;
   }
