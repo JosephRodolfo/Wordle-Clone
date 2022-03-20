@@ -1,4 +1,5 @@
 
+
 class WordInput extends React.Component {
   constructor(props) {
     super(props);
@@ -224,7 +225,7 @@ class KeyBoardContainer extends React.Component {
           <div className="key-l keyboard-letters">l</div>
         </div>
         <div className="keyboard-row">
-          <div className="key-enter keyboard-letters">Enter</div>
+          <div className="key-backspace keyboard-letters">Back</div>
           <div className="key-z keyboard-letters">z</div>
           <div className="key-x keyboard-letters">x</div>
           <div className="key-c keyboard-letters">c</div>
@@ -232,7 +233,7 @@ class KeyBoardContainer extends React.Component {
           <div className="key-b keyboard-letters">b</div>
           <div className="key-n keyboard-letters">n</div>
           <div className="key-m keyboard-letters">m</div>
-          <div className="key-backspace keyboard-letters">Back</div>
+          <div className="key-enter keyboard-letters">Enter</div>
         </div>
       </div>
     );

@@ -364,6 +364,11 @@ nav > ul > li:nth-child(5):hover {
   color: var(--lightThemeBackground);
 }
 
+.key-enter, .key-backspace {
+min-width: min-content;
+padding: 0.2em;
+}
+
 
 #all-letters-container {
   display: none;
