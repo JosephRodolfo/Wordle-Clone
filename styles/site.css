@@ -628,7 +628,7 @@ input[type="text"] {
 .keyboard-row > .button{
 
   background-color: var(--lightThemeBlack);
-  color: var(--lightThemeBackground);
+  color: var(--lightThemeBackground); 
   text-transform: none;
   box-shadow: none;
   border: none;
@@ -638,12 +638,15 @@ input[type="text"] {
 @media only screen and (max-width: 450px) {
 
 .title {
-
   font-size: 4.5em;
-  
 }
 nav ul {
-height: 75%}
+height: 100%;
+}
+
+#grid-body-wrapper{
+grid-template-rows: 2.3em 60% 40% 0fr;
+}
 }
 
 

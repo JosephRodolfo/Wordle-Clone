@@ -65,7 +65,7 @@ class WordInput extends React.Component {
 
         //  resetGame();
         overlayAlert(
-          "You lost! The word was " + scoreKeeper.theWordleWord,
+          `You lost! The word was ${scoreKeeper.theWordleWord}`,
           resetGame()
         );
       }
@@ -195,11 +195,13 @@ class KeyBoardContainer extends React.Component {
         );
         placeLetters(scoreKeeper.theGuess);
         if (checkForWin(theWord.length)) {
-          overlayAlert("You won in " + scoreKeeper.row, resetGame());
-        }
-        if (checkForLoss(scoreKeeper.row)) {
           overlayAlert(`You won in <span id='nonCoco'>${scoreKeeper.row}</span>`, resetGame());
         }
+        if (checkForLoss(scoreKeeper.row)) {
+          overlayAlert(
+            `You lost! The word was ${scoreKeeper.theWordleWord}`,
+            resetGame()
+          );        }
       } else {
         this.wipeLetters();
   
