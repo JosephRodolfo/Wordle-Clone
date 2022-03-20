@@ -421,7 +421,7 @@ function overlayAlert(alertMessage, callbackFunction) {
 
   let overlayMessageHolder = document.querySelector(".overlay-alert-card>span");
 
-  overlayMessageHolder.innerText = alertMessage;
+  overlayMessageHolder.innerHTML = alertMessage;
   let overlay = document.querySelector(".overlay-alert-wrapper");
 
   overlay.style.setProperty("opacity", "100%");

@@ -80,6 +80,12 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+
+.svgImage:hover {
+
+ cursor: pointer;
+}
+
 /*grid and layout styles*/
 
 #grid-body-wrapper {
@@ -97,10 +103,6 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden;
 }
 
-
-.svgImages{
-  fill: blue;
-}
 #grid-board-and-input {
   background-color: var(--lightThemeBackground);
   grid-area: board-input;
@@ -129,10 +131,13 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2.8125rem;
   font-family: CocogooseRegular, sans-serif;
   text-align: center;
-  color: var(--lightThemeBackground);
+  color: #f7f7f7;
   }
-  /*    font-size: clamp(minimum-size, prefered-size, maximum-size)*/
 
+.grid-item >* {
+
+color: #f7f7f7;
+}
 #grid-board-container {
   display: flex;
   flex-direction: column;
@@ -142,18 +147,17 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 #input-container {
   background-color: var(--lightThemeBlue);
-
   display: none;
 }
 
 /* mobile overlay styles*/
 
 .overlay .close-overlay{
-  position: absolute;
-  top: 0.375em;
-  right: 0.375em;
+
   font-size: 3.75rem;
   color: var(--lightThemeBlack);
+  margin-bottom: .5em;
+
 }
 
 .overlay .close-overlay:hover{
@@ -190,7 +194,7 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: var(--lightThemeDropDown);
+  background-color: var(--lightThemeBackground);
   opacity: 0.98;
   overflow-x: hidden;
   transition: 0.5s;
@@ -199,8 +203,15 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: center;
 }
 
-.overlay-content > ul > li:nth-child(1),
-.overlay-content > ul > li:nth-child(2) {
+.overlay-content > ul > li:first-child{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+
+.overlay-content > ul > li:nth-child(2),
+.overlay-content > ul > li:nth-child(3) {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -240,9 +251,19 @@ justify-content: center;
 
 
 }
-.overlay-alert-card>span{
 
-font-family: Cocogooseregular;
+.overlay-alert-card>span {
+  font-family: 'CocogooseRegular', sans-serif;
+  color: var(--lightThemeBlack);
+}
+
+
+#nonCoco{
+
+font-family: sans-serif;
+font-weight: 1000;
+color: var(--lightThemeBlack);
+
 }
 /*nav styles*/
 
@@ -304,7 +325,7 @@ nav > ul > li:nth-child(5) {
   position: absolute;
   right: 1em;
   border: 2px solid var(--lightThemeBlack);
-  top: 2em;
+  top: 1.5em;
   border-radius: 100%;
   height: 4em;
   width: 4em;
@@ -313,6 +334,7 @@ nav > ul > li:nth-child(5) {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  color: var(--lightThemeBlack);
 }
 
 nav > ul > li:nth-child(5):hover {
@@ -403,6 +425,7 @@ padding: 0.2em;
     font-family: CocogooseUltralight;
     background-color: var(--lightThemeBlack);
     color: var(--lightThemeBackground);
+    padding-top: 3px;
   }
 
 
@@ -468,19 +491,22 @@ aside section {
 button {
   box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
     5px 5px 0px 0px;
-
   width: 50%;
+color: var(--lightThemeBlack)
+}
 
+.number-submit-container > input:focus{
+  color: black;
 }
 
 input[type="number"] {
   border: none;
   height: 3em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
-    5px 5px 0px 0px;
-  font-size: 16px;
+
+  font-size: 1em;
     
 }
+
 
 .number-submit-container > button {
   border: none;
@@ -488,6 +514,7 @@ input[type="number"] {
   font-family: CocoGooseRegular, sans-serif;
   border: 0;
   height: 3em;
+  min-width: min-content;
 
 }
 
@@ -588,9 +615,9 @@ input[type="text"] {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 50%;
   background-color: var(--lightThemeRed);
 }
+
 
 .button:active {
   box-shadow: 0px 0px 0px 0px;
@@ -598,6 +625,26 @@ input[type="text"] {
   left: .25em;
 }
 
+.keyboard-row > .button{
+
+  background-color: var(--lightThemeBlack);
+  color: var(--lightThemeBackground);
+  text-transform: none;
+  box-shadow: none;
+  border: none;
+  letter-spacing: 1px;
+
+}
+@media only screen and (max-width: 450px) {
+
+.title {
+
+  font-size: 4.5em;
+  
+}
+nav ul {
+height: 75%}
+}
 
 
 /*Media query 1*/
@@ -627,11 +674,6 @@ input[type="text"] {
     width: 37.5%;
   }
 
-  ul li ul.dropdown.right {
-  
-
-
-  }
 
   ul li ul.dropdown.right {
     right: 0;
@@ -641,7 +683,7 @@ input[type="text"] {
     width: 37.5%;
     overflow: hidden;
     transition: height 1s;
-
+    background-color: var(--lightThemeBackground);
   }
 
   ul li:hover ul.dropdown.right {
@@ -651,7 +693,7 @@ input[type="text"] {
 
   .dropdown.right {
     width: 37.5%;
-
+    padding-left: 1em;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -773,6 +815,15 @@ input[type="text"] {
     align-items: center;
   }
 
+  #input-container form {
+display: flex;
+flex-direction: column;
+align-items: center;
+  }
+  #input-container form >* {
+margin-bottom: .5em;
+      }
+
   #input-container > * {
     margin: 1em;
   }
@@ -784,13 +835,17 @@ that only exists within medium size laout*/
     /*left side hamburger drop down nav bar*/
     ul li ul.dropdown.left {
       height: 0;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: absolute;
       top: 3.125em;
       width: var(--dropDownWidth);
       overflow: hidden;
       transition: height 1s;
-      background-color: var(--lightThemeDropDown);
+      background-color: var(--lightThemeBackground);
+      padding: 0;
+
     }
 
     ul li ul.dropdown.left {
@@ -798,17 +853,22 @@ that only exists within medium size laout*/
     }
 
     ul li:hover ul.dropdown.left {
+      padding: 0;
       position: absolute;
-      display: block;
-      height: 6.25em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;  
+          height: 6.25em;
       top: 3.125em;
       width: var(--dropDownWidth);
-      background: var(--lightThemeDropDown);
+      background: var(--lightThemeBackground);
       left: 0;
+      min-height: min-content;
     }
 
     ul li ul.dropdown.left li {
-      background-color: var(--lightThemeDropDown);
+      background-color: var(--lightThemeBackground);
+      padding: .2em;
       margin: 0;
     }
 

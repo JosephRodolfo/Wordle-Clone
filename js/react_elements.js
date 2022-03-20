@@ -9,6 +9,7 @@ class WordInput extends React.Component {
     this.wipeLetters = this.wipeLetters.bind(this);
     this.state = {
       array: [],
+      value: false
   };
   }
 
@@ -26,6 +27,8 @@ class WordInput extends React.Component {
   }
 
   submitFunction(e) {
+    this.wipeLetters();
+
 
     e.preventDefault();
 
@@ -52,10 +55,14 @@ class WordInput extends React.Component {
       );
       placeLetters(scoreKeeper.theGuess);
       if (checkForWin(theWord.length)) {
+              this.wipeLetters();
+
         //resetGame();
-        overlayAlert("You won in " + scoreKeeper.row, resetGame());
+        overlayAlert(`You won in <span id='nonCoco'>${scoreKeeper.row}</span>`, resetGame());
       }
       if (checkForLoss(scoreKeeper.row)) {
+        this.wipeLetters();
+
         //  resetGame();
         overlayAlert(
           "You lost! The word was " + scoreKeeper.theWordleWord,
@@ -85,7 +92,7 @@ class WordInput extends React.Component {
       
 
         <input type="text"  ref= {el => this.inputValue = el}  id="word-guess" onChange={this.logLetters} />
-        <button type="submit" className="button" id="button-guess">
+        <button type="submit" disabled={this.state.value} className="button" id="button-guess">
           Submit
         </button>
       </form>
@@ -131,6 +138,11 @@ class KeyBoardContainer extends React.Component {
   }
 
   getCurrentKey(e) {
+
+
+    if(this.state.array.length<scoreKeeper.theWordleWord.length){
+
+
     if (e.target.innerText.length === 1) {
       getResponsiveFontSize();
 
@@ -147,7 +159,9 @@ class KeyBoardContainer extends React.Component {
           array: prevState.array.concat(t),
         };
       }, this.renderLetters);
-    } else if (e.target.innerText== "Back"){
+    }  } 
+
+    if (e.target.innerText== "Back"){
       this.setState((prevState) => {
         return {
           array: prevState.array.slice(0, -1),
@@ -155,10 +169,12 @@ class KeyBoardContainer extends React.Component {
       }, this.renderLetters);
 
 
-    } 
+    }
     
-    else if(e.target.innerText=== "Enter")  {
+     if(e.target.innerText=== "Enter")  {
       
+
+  
 
     /*  let wordGuess = document.getElementById("word-guess");
       let holder = wordGuess.value;
@@ -182,10 +198,7 @@ class KeyBoardContainer extends React.Component {
           overlayAlert("You won in " + scoreKeeper.row, resetGame());
         }
         if (checkForLoss(scoreKeeper.row)) {
-          overlayAlert(
-            "You lost! The word was " + scoreKeeper.theWordleWord,
-            resetGame()
-          );
+          overlayAlert(`You won in <span id='nonCoco'>${scoreKeeper.row}</span>`, resetGame());
         }
       } else {
         this.wipeLetters();
@@ -202,38 +215,38 @@ class KeyBoardContainer extends React.Component {
     return (
       <div onClick={this.getCurrentKey}>
         <div className="keyboard-row">
-          <div className="key-q keyboard-letters">q</div>
-          <div className="key-w keyboard-letters">w</div>
-          <div className="key-e keyboard-letters">e</div>
-          <div className="key-r keyboard-letters">r</div>
-          <div className="key-t keyboard-letters">t</div>
-          <div className="key-y keyboard-letters">y</div>
-          <div className="key-u keyboard-letters">u</div>
-          <div className="key-i keyboard-letters">i</div>
-          <div className="key-o keyboard-letters">o</div>
-          <div className="key-p keyboard-letters">p</div>
+          <div className="key-q keyboard-letters button">q</div>
+          <div className="key-w keyboard-letters button">w</div>
+          <div className="key-e keyboard-letters button">e</div>
+          <div className="key-r keyboard-letters button">r</div>
+          <div className="key-t keyboard-letters button">t</div>
+          <div className="key-y keyboard-letters button">y</div>
+          <div className="key-u keyboard-letters button">u</div>
+          <div className="key-i keyboard-letters button">i</div>
+          <div className="key-o keyboard-letters button">o</div>
+          <div className="key-p keyboard-letters button">p</div>
         </div>
         <div className="keyboard-row">
-          <div className="key-a keyboard-letters">a</div>
-          <div className="key-s keyboard-letters">s</div>
-          <div className="key-d keyboard-letters">d</div>
-          <div className="key-f keyboard-letters">f</div>
-          <div className="key-g keyboard-letters">g</div>
-          <div className="key-h keyboard-letters">h</div>
-          <div className="key-j keyboard-letters">j</div>
-          <div className="key-k keyboard-letters">k</div>
-          <div className="key-l keyboard-letters">l</div>
+          <div className="key-a keyboard-letters button">a</div>
+          <div className="key-s keyboard-letters button">s</div>
+          <div className="key-d keyboard-letters button">d</div>
+          <div className="key-f keyboard-letters button">f</div>
+          <div className="key-g keyboard-letters button">g</div>
+          <div className="key-h keyboard-letters button">h</div>
+          <div className="key-j keyboard-letters button">j</div>
+          <div className="key-k keyboard-letters button">k</div>
+          <div className="key-l keyboard-letters button">l</div>
         </div>
         <div className="keyboard-row">
-          <div className="key-backspace keyboard-letters">Back</div>
-          <div className="key-z keyboard-letters">z</div>
-          <div className="key-x keyboard-letters">x</div>
-          <div className="key-c keyboard-letters">c</div>
-          <div className="key-v keyboard-letters">v</div>
-          <div className="key-b keyboard-letters">b</div>
-          <div className="key-n keyboard-letters">n</div>
-          <div className="key-m keyboard-letters">m</div>
-          <div className="key-enter keyboard-letters">Enter</div>
+          <div className="key-backspace keyboard-letters button">Back</div>
+          <div className="key-z keyboard-letters button">z</div>
+          <div className="key-x keyboard-letters button">x</div>
+          <div className="key-c keyboard-letters button">c</div>
+          <div className="key-v keyboard-letters button">v</div>
+          <div className="key-b keyboard-letters button">b</div>
+          <div className="key-n keyboard-letters button">n</div>
+          <div className="key-m keyboard-letters button">m</div>
+          <div className="key-enter keyboard-letters button">Enter</div>
         </div>
       </div>
     );
