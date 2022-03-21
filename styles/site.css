@@ -60,10 +60,11 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
+  background-color: var(--lightThemeBackground);
 }
 
 a {
-  font-family: CocoGooseRegular;
+  font-family: CocoGooseRegular, sans-serif;
   color: var(--lightThemeBlack);
   text-decoration: none;
 }
@@ -183,7 +184,7 @@ color: #f7f7f7;
   font-size: 2em;
   color: var(--lightThemeBlack);
   display: block;
-  font-family: CocoGooseRegular;
+  font-family: 'CocoGooseRegular', sans-serif;
 
   transition: 0.3s;
 }
@@ -289,7 +290,7 @@ nav > ul {
 
 nav > ul > li {
   list-style: none;
-  font-family: CocoGooseRegular;
+  font-family: 'CocoGooseRegular', sans-serif;
   display: none;
   margin: 0;
   width: 3.125em;
@@ -374,7 +375,7 @@ nav > ul > li:nth-child(5):hover {
   background-color: var(--lightThemeBlack);
   max-height: 3.625em;
   flex-basis: 3.625em;
-  font-family: CocogooseRegular, "sans-serif";
+  font-family: 'CocogooseRegular', "sans-serif";
   height: 3.625em;
   max-width: 2.875em;
   min-width: .375em;
@@ -422,7 +423,7 @@ padding: 0.2em;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    font-family: CocogooseUltralight;
+    font-family: 'CocogooseUltralight', sans-serif;
     background-color: var(--lightThemeBlack);
     color: var(--lightThemeBackground);
     padding-top: 3px;
@@ -511,7 +512,7 @@ input[type="number"] {
 .number-submit-container > button {
   border: none;
   background-color: var(--lightThemeGray);
-  font-family: CocoGooseRegular, sans-serif;
+  font-family: 'CocoGooseRegular', sans-serif;
   border: 0;
   height: 3em;
   min-width: min-content;
@@ -596,11 +597,11 @@ input[type="text"] {
   border: 0;
   font-size: 2rem;
   box-shadow: 0 0 1em .25em rgba(0, 0, 0, 0.06);
-  font-family: CocoGooseRegular, "Open Sans", sans-serif;
+  font-family: 'CocoGooseRegular', "Open Sans", sans-serif;
 }
 
 .button {
-  font-family: CocoGooseRegular, "Open Sans", sans-serif;
+  font-family: 'CocoGooseRegular', "Open Sans", sans-serif;
   font-size: 1rem;
   letter-spacing: 2px;
   text-decoration: none;
@@ -742,7 +743,7 @@ grid-template-rows: 2.3em 60% 40% 0fr;
 
   nav ul li {
     list-style: none;
-    font-family: CocoGooseRegular;
+    font-family: 'CocoGooseRegular', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
