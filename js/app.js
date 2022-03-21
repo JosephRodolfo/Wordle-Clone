@@ -103,7 +103,8 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
 
     let tempSquare = document.querySelectorAll(keyLight);
     if (updaterInputArray[i].toString().slice(-1) == 6) {
-      if (tempSquare[0].style.backgroundColor == "--lightThemeBlue") {
+      console.log(tempSquare);
+      if (tempSquare[0].style.backgroundColor == "var(--lightThemeBlue)") {
         tempSquare[0].style.setProperty(
           "background-color",
           "var(--lightThemeBlue)"
@@ -376,8 +377,10 @@ function darkThemeToggle() {
   var root = document.querySelector(":root");
 
   let toggleSwitches = document.querySelectorAll(".dark-mode-toggle");
-  toggleSwitches.forEach((element) =>
-    element.addEventListener("change", turnOnOrOffDarkMode)
+  toggleSwitches.forEach((element) => {
+    element.addEventListener("change", turnOnOrOffDarkMode);
+    element.checked=false;
+    }
   );
   function turnOnOrOffDarkMode() {
     if (this.id == "toggle1") {
