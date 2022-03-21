@@ -441,21 +441,11 @@ function overlayAlert(alertMessage, callbackFunction) {
   }
 
   let overlayResetButton = document.querySelector("#close-alert-button");
-
   
   overlayResetButton.addEventListener("click", resetGameAndResetOverlay, once);
-
-
-
 }
 
 function validateGuess(guessWord, numberOfLetters) {
-
-
- 
-
-
-
   if (alphaOnly(guessWord) && checkLength(guessWord, numberOfLetters)) {
     return true;
   } else {

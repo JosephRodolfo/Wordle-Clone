@@ -35,14 +35,11 @@ class WordInput extends React.Component {
     const inputValueTemp = this.inputValue.value;
     if(inputValueTemp.length > 0){
 
-        this.inputValue.value = '';     //here
-
+        this.inputValue.value = '';     
     } 
-   // let wordGuess = document.getElementById("word-guess");
     let holder = this.state.array.join("");
-//    wordGuess.value = "";
 
-    if (validateGuess(holder, scoreKeeper.numberOfLettersInWord)) {
+    if (validateGuess(holder, parseInt(scoreKeeper.numberOfLettersInWord))) {
       var theWord = scoreKeeper.theWordleWord.split("");
       scoreKeeper.row++;
 
@@ -145,7 +142,6 @@ class KeyBoardContainer extends React.Component {
 
     if (e.target.innerText.length === 1) {
       getResponsiveFontSize();
-
       let t = e.target.innerText;
 
       /* this.setState((prevState)=>{
@@ -161,7 +157,7 @@ class KeyBoardContainer extends React.Component {
       }, this.renderLetters);
     }  } 
 
-    if (e.target.innerText== "Back"){
+    if (e.target.innerText=== "Back"){
       this.setState((prevState) => {
         return {
           array: prevState.array.slice(0, -1),
@@ -174,14 +170,11 @@ class KeyBoardContainer extends React.Component {
      if(e.target.innerText=== "Enter")  {
       
 
-  
 
-    /*  let wordGuess = document.getElementById("word-guess");
-      let holder = wordGuess.value;
-      wordGuess.value = "";*/
+  
       let holder = this.state.array.join("").toLowerCase();
   
-      if (validateGuess(holder, scoreKeeper.numberOfLettersInWord)) {
+      if (validateGuess(holder, parseInt(scoreKeeper.numberOfLettersInWord))) {
         var theWord = scoreKeeper.theWordleWord.split("");
         scoreKeeper.row++;
       this.wipeLetters();
