@@ -54,12 +54,18 @@ class WordInput extends React.Component {
       );
       placeLetters(scoreKeeper.theGuess);
       if (checkForWin(theWord.length)) {
+       e.currentTarget[0].blur();
+       e.currentTarget[1].blur();
+
               this.wipeLetters();
+
 
         //resetGame();
         overlayAlert(`You won in <span id='nonCoco'>${scoreKeeper.row}</span>`, resetGame());
       }
       if (checkForLoss(scoreKeeper.row)) {
+        e.currentTarget[0].blur();
+        e.currentTarget[1].blur();
         this.wipeLetters();
 
         //  resetGame();

@@ -103,7 +103,6 @@ function updateKeyboard(updaterInputArray, theGuessWord, theWordleWord) {
 
     let tempSquare = document.querySelectorAll(keyLight);
     if (updaterInputArray[i].toString().slice(-1) == 6) {
-      console.log(tempSquare);
       if (tempSquare[0].style.backgroundColor == "var(--lightThemeBlue)") {
         tempSquare[0].style.setProperty(
           "background-color",
