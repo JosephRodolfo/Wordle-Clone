@@ -22,8 +22,10 @@ class WordInput extends React.Component {
   logLetters(e) {
     getResponsiveFontSize();
 
-    let t = e.target.value.split("");
-    this.setState({ array: t }, this.renderLetters);
+    let t = e.target.value.toLowerCase();
+    
+    let lowerCaseT= t.split("");
+    this.setState({ array: lowerCaseT }, this.renderLetters);
   }
 
   submitFunction(e) {
@@ -37,7 +39,7 @@ class WordInput extends React.Component {
 
         this.inputValue.value = '';     
     } 
-    let holder = this.state.array.join("");
+    let holder = this.state.array.join("").toLowerCase();
 
     if (validateGuess(holder, parseInt(scoreKeeper.numberOfLettersInWord))) {
       var theWord = scoreKeeper.theWordleWord.split("");
