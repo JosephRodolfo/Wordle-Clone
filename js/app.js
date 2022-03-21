@@ -387,9 +387,9 @@ function darkThemeToggle() {
     }
 
     if (toggleSwitches[0].checked) {
-      root.style.setProperty("--lightThemeBlue", "#245262");
-      root.style.setProperty("--lightThemeGray", "rgb(94, 94, 94)");
-      root.style.setProperty("--lightThemeRed", "#6600ff");
+      root.style.setProperty("--lightThemeBlue", "rgb(57, 125, 150)");
+      root.style.setProperty("--lightThemeGray", "rgb(120, 120, 120)");
+      root.style.setProperty("--lightThemeRed", "#944BEE"); //"#6600ff"); I like this one but contrast is only 3 with black
       root.style.setProperty("--lightThemeBlack", "white");
       root.style.setProperty("--lightThemeBackground", "#18191A");
       root.style.setProperty("--lightThemeDropDown", "#f2f2f2");
