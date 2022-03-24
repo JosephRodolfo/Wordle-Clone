@@ -19,7 +19,7 @@ The function "findIndex" takes the secret Wordle word and the player's guess wor
 
 Wordle-Clone uses CSS Grid to display content at 2 main (min-size) breakpoints for a total of three major layouts, going from 1 to 2 to 3 column, with a fixed nav at top. Within major layout components content is mostly arranged using CSS flexbox, though the game board itself uses CSS Grid and CSS variables that change with user input to change the number of columns/letters. 
 
-* Show/hide one or more content areas or elements on your site through clicking a button or some other user interaction - must be done with some JavaScript code. 
+* "Show/hide one or more content areas or elements on your site through clicking a button or some other user interaction - must be done with some JavaScript code." 
 
 On the one-column layout, for nav there is one single menu button, and on click it uses Javascript to change a CSS class that triggers a CSS transition from 0 to 100% width that displays all navigation information. 
 
