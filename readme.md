@@ -1,6 +1,6 @@
 # Wordle-Clone
 
-Wordle-Clone is a clone of the popular online game Wordle (https://www.nytimes.com/games/wordle/index.html), with a few differences. Rather than the set 6 letters of the original, Wordle-Clone allows users to choose the length of the word they will try to guess, from 3 to 15 letters, as well as play as many times per day as they want, as Wordle-Clone chooses new words at random from a dictionary. 
+Wordle-Clone is a clone of the popular online game Wordle (https://www.nytimes.com/games/wordle/index.html), with a few differences. Rather than the set 5 letters of the original, Wordle-Clone allows users to choose the length of the word they will try to guess, from 3 to 15 letters, as well as play as many times per day as they want, as Wordle-Clone chooses new words at random from a dictionary. 
 
 Wordle-Clone uses HTML, CSS, vanilla Javascript, with a small amount of React. 
 
